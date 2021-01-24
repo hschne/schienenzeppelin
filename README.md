@@ -34,8 +34,10 @@ Per default, Schienenzeppelin will be configured using a set of customized optio
 - JBuilder
 - PostgreSQL
 - Honeybadger
-- Hotwire
+- Hotwire 
+- Stimulus 
 - Rack Mini Profiler
+- Custom Webpacker configuration
 
 ### Development
 - `.irbrc` configuration
