@@ -4,9 +4,64 @@ Schienenzeppelin is an opinionated Ruby on Rails template. It is  ̶a̶̶̶ ̶̶
 
 ![zeppelin](./schienenzeppelin.jpg)
 
-## Usage
+## Getting Started
+
+Install the schienenzeppelin gem: 
+
+```
+gem install schienenzeppelin
+```
+
+Then run:
+
+```
+schienenzeppelin new <project-name>
+```
+
+See [Usage](#usage) for details.
 
 ## What's included? 
+
+Per default, Schienenzeppelin will be configured using a set of customized options for development, testing and production use of your application. Here are some highlights: 
+
+### Production
+
+- Tailwind CSS
+- High Voltage
+- Skylight
+- Sidekiq
+- Oj
+- JBuilder
+- PostgreSQL
+- Honeybadger
+- Hotwire
+- Rack Mini Profiler
+
+### Development
+- `.irbrc` configuration
+- `bin/setup` script
+- Dotenv
+- Bullet
+- Byebug
+- Opinionated RuboCop setup
+- Brakeman & Bundle Audit configurations
+
+### Testing
+- Rspec
+- Factorybot
+- Rspec Mocks
+- Rspec Matchers
+
+### Deployment & CI
+
+- `./bin/deploy` script
+- Github Action workflow for CI
+- Dockerfile
+- Docker compose file
+
+## Usage
+
+TODO
 
 ## FAQ
 
