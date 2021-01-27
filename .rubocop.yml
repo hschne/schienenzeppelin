@@ -1,5 +1,8 @@
 require: rubocop-rspec
 
+Naming/AccessorMethodName:
+  Enabled: false
+
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
 

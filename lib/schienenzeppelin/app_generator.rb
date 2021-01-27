@@ -2,7 +2,6 @@
 
 module Schienenzeppelin
   class AppGenerator < Rails::Generators::AppGenerator
-
     class_option :database,
                  type: :string,
                  aliases: '-d',
