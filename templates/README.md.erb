@@ -1,18 +1,20 @@
-#!/bin/sh
+# <%= app_name.humanize %>
 
-# Set up Rails app. Run this script immediately after cloning the codebase.
-# https://github.com/thoughtbot/guides/tree/master/protocol
+## Getting Started
 
-# Exit if any subcommand fails
-set -e
+After you have cloned this repo, run this setup script to set up your machine
+with the necessary dependencies to run and test this app:
 
-# Set up Ruby dependencies via Bundler
-gem install bundler
-bundle check || bundle install
+    % ./bin/setup
 
-# Install JavaScript dependencies
-bin/yarn
+It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
+your machine with [this script].
 
-# Set up database and add any development seed data
-bin/rails db:setup
+[this script]: https://github.com/thoughtbot/laptop
+
+After setting up, you can run the application using [Heroku Local]:
+
+    % heroku local
+
+[Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
 
