@@ -32,7 +32,7 @@ Per default, Schienenzeppelin will be configured using a set of customized optio
 - Sidekiq
 - Oj
 - JBuilder
-- PostgreSQL
+- PostgreSQL: Customized database YML
 - Honeybadger
 - Hotwire 
 - Stimulus 
@@ -44,7 +44,7 @@ Per default, Schienenzeppelin will be configured using a set of customized optio
 - `bin/setup` script
 - Using .tool_versions for asdf version manager
 - Improved gitignore
-- Dotenv
+- Dotenv: Customized settings
 - Bullet
 - Byebug
 - Opinionated RuboCop setup
