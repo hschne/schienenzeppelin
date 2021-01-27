@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails'
-require "rails/generators/app_base"
+
 
 module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
