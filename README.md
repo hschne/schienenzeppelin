@@ -42,6 +42,8 @@ Per default, Schienenzeppelin will be configured using a set of customized optio
 ### Development
 - `.irbrc` configuration
 - `bin/setup` script
+- Using .tool_versions for asdf version manager
+- Improved gitignore
 - Dotenv
 - Bullet
 - Byebug

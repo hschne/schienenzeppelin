@@ -1,0 +1,28 @@
+require: rubocop-rspec
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+Layout/LineLength:
+  Max: 120
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/BlockDelimiters:
+  Exclude:
+    - spec/**/*
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/**/*
+
+RSpec/MultipleExpectations:
+  Max: 2
