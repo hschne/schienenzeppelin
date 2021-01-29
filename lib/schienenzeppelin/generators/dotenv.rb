@@ -4,7 +4,7 @@ module Schienenzeppelin
   module Generators
     class Dotenv < GeneratorBase
       def add_gem
-        gem "dotenv-rails"
+        gem 'dotenv-rails'
       end
 
       def add_files

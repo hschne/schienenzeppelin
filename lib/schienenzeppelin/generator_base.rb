@@ -5,7 +5,7 @@ module Schienenzeppelin
     class GeneratorBase < Rails::Generators::Base
       include Rails::Generators::AppName
       def self.default_source_root
-        File.expand_path(File.join("..", "..", "templates"), __dir__)
+        File.expand_path(File.join('..', '..', 'templates'), __dir__)
       end
     end
   end

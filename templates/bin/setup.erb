@@ -124,7 +124,7 @@ on_error() {
   local colored_errors
   colored_errors=$(printf "${YELLOW}$errors${NO_COLOR}")
   echo
-  printf "\n❌${RED}  Setup exited with errors:${NO_COLOR}\n"
+  printf "❌${RED}  Setup exited with errors:${NO_COLOR}\n"
   cat <<EOF
   ------
   $colored_errors

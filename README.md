@@ -81,16 +81,17 @@ Webpacker is enabled per default.
 - Hotwire 
 - Stimulus 
 - Rack Mini Profiler
-- Custom Webpacker configuration
+- Custom Webpacker configuration?
+- Pundit
+- Service Objects
 
 ### Development
-- `.irbrc` configuration
-- `bin/setup` script
-- Dotenv: Customized settings
-- Using .tool_versions for asdf version manager
+- `.irbrc` configuration -  OK
+- `bin/setup` script - OK
+- Dotenv: Customized settings - OK
+- Using .tool_versions for asdf version manager - OK
+- Improved gitignore - OK
 - Preconfigured vault secret file
-- Improved gitignore
-- Dotenv: Customized settings
 - Bullet
 - Byebug
 - Opinionated RuboCop setup

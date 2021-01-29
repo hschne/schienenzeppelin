@@ -17,10 +17,15 @@ module Schienenzeppelin
       build(:docker_compose)
     end
 
+    def credentials
+      return if options[:pretend] || options[:dummy_app]
+
+      build(:credentials)
+    end
+
     def finish_template
-      build(:add_gems)
+      build(:dotenv)
       super
-      gemfile_entries
     end
 
     def self.banner
@@ -46,6 +51,5 @@ module Schienenzeppelin
        cable_gemfile_entry,
        @extra_entries].flatten.find_all(&@gem_filter)
     end
-
   end
 end
