@@ -12,27 +12,39 @@ module Schienenzeppelin
       super
 
       build(:irbrc)
+      build(:foreman)
       build(:docker)
       build(:docker_compose)
     end
 
     def finish_template
-      invoke(:add_gems)
+      build(:add_gems)
       super
+      gemfile_entries
     end
 
     def self.banner
       "sz new #{arguments.map(&:usage).join(' ')} [options]"
     end
 
-    def add_gems
-      generate("schienenzeppelin:dotenv")
-    end
-
     protected
 
     def get_builder_class
       Schienenzeppelin::AppBuilder
+    end
+
+    private
+
+    def gemfile_entries # :doc:
+      [rails_gemfile_entry,
+       database_gemfile_entry,
+       web_server_gemfile_entry,
+       assets_gemfile_entry,
+       webpacker_gemfile_entry,
+       javascript_gemfile_entry,
+       psych_gemfile_entry,
+       cable_gemfile_entry,
+       @extra_entries].flatten.find_all(&@gem_filter)
     end
 
   end

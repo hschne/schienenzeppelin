@@ -34,12 +34,16 @@ Below is a complete list of improvements and tweaks to streamline your developme
 A setup script that allows for easy setup of the application on a new machine is provided. It is automatically tailored to your specific
  app configuration.
  
+#### Start Script 
+
+Once you have set up everything your application can be started with a single command line call - using Foreman. All necessary procfiles are generated.
+ 
 #### Better Rails Console
 
 Schienenzeppelin comes with a custom `.irbrc` that adds history and syntax completion. If [Factory Bot](#factory_bot) is enabled support
 for Factory methods is also added.
 
-#### Integrated Dotenv Support
+#### Dotenv 
 
 [Dotenv](https://github.com/bkeepers/dotenv) is a nifty gem that makes environment variables easier to manage. 
 
@@ -56,10 +60,13 @@ Schienenzeppelin comes with support for the [asdf version manager](https://asdf-
 
 Schienenzeppelin provides a custom `.gitignore` that specifically tailored to your app.
 
-#### Opionionated Style 
+#### Opinionated Style 
 
 Creating your app with Schienenzeppelin will automatically create a minimal set of Rubocop rules for both your production and test code.
 
+#### Webpacker
+
+Webpacker is enabled per default.
 
 ### Production
 

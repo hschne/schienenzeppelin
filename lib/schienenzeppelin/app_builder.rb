@@ -2,6 +2,12 @@
 
 module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
+    def bin
+      super
+      remove_file "bin/setup"
+      template 'bin/setup.erb', 'bin/setup'
+    end
+
     def readme
       template 'README.md.erb', 'README.md'
     end
@@ -19,12 +25,13 @@ module Schienenzeppelin
     end
 
     def docker
-      template 'Dockerfile.erb', 'Dockerfile'
-      template '.dockerignore.erb', '.dockerignore'
+      Schienenzeppelin::Generators::Docker.new.invoke_all
     end
 
-    def docker_compose
-      template 'docker-compose.yml.erb', 'docker-compose.yml'
+    def foreman
+      template '.foreman.erb', '.foreman'
+      template 'Procfile.erb', 'Procfile'
+      template 'Procfile.dev.erb', 'Procfile.dev'
     end
 
     def database_yml
@@ -35,6 +42,8 @@ module Schienenzeppelin
       end
     end
 
-
+    def add_gems
+      Schienenzeppelin::Generators::Dotenv.new.invoke_all
+    end
   end
 end
