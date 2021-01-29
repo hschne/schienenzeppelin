@@ -12,14 +12,21 @@ module Schienenzeppelin
       super
 
       build(:irbrc)
+      build(:docker)
+      build(:docker_compose)
     end
 
-    def database_yml
-      if options[:database] == 'postgresql'
-        template 'config/postgresql.yml.erb', 'config/database.yml'
-      else
-        super
-      end
+    def finish_template
+      invoke(:add_gems)
+      super
+    end
+
+    def self.banner
+      "sz new #{arguments.map(&:usage).join(' ')} [options]"
+    end
+
+    def add_gems
+      generate("schienenzeppelin:dotenv")
     end
 
     protected
@@ -27,5 +34,6 @@ module Schienenzeppelin
     def get_builder_class
       Schienenzeppelin::AppBuilder
     end
+
   end
 end

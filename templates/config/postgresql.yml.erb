@@ -19,5 +19,6 @@ test:
 
 production:
   <<: *default
-  min_messages: warning
+  database: <%%= ENV.fetch('DATABASE_NAME') { <%= app_name %>_production } %>
   pool: <%%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
+  min_messages: warning
