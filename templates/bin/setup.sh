@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NO_COLOR='\033[0m'
+CLEAR_LINE='\r\033[K'
+
+LOG_FILE=$(mktemp /tmp/<%= app_name %>-setup-XXXXXX)
+
+# Emojis from https://graphemica.com/
+main() {
+progress 1 🔎 "Checking dependencies"
+
+if [[ ! $(command -v ruby) ]]; then
+  clear
+  error "Ruby <%= RUBY_VERSION %> is required but not currently installed"
+  exit 101
+fi
+
+if [[ ! $(ruby --version) =~ 2.6.6 ]]; then
+  clear
+  error "Your version of ruby does not match the required version <%= RUBY_VERSION %>"
+  exit 101
+fi
+
+if [[ ! $(command -v node) ]]; then
+  clear
+  error "Node is required but not currently installed"
+  exit 101
+fi
+
+if [[ ! $(command -v yarn) ]]; then
+  clear
+  error "Yarn is required but not currently installed"
+  exit 101
+fi
+
+clear
+progress 2 📦 "Installing bundler"
+gem install bundler 2> "$LOG_FILE" 1> /dev/null
+
+clear
+progress 3 💎 "Installing gems"
+bundle install 2> "$LOG_FILE" 1> /dev/null
+
+clear
+progress 4 ⏳ "Installing yarn packages"
+yarn 2> "$LOG_FILE" 1> /dev/null
+
+clear
+progress 5 🌐 "Checking database"
+<% db_port = { postgresql: 5432, mysql: 3306}[options[:database].to_sym] %>
+if ! is_port_open <%= db_port %>; then
+  clear
+  error "Database be running under port <%= db_port %> but was not found"
+  info "In order to continue the setup you require a running database server"
+  exit 101
+fi
+
+clear
+progress 6 💾 "Setting up databases"
+rails db:setup 2> "$LOG_FILE" 1> /dev/null
+
+}
+
+libary_exists() {
+  local name=$1
+  libs=$(ldconfig -p | grep -c "$name")
+  [[ "$libs" -ge 1 ]]
+  return $?
+}
+
+is_port_open() {
+  local port=$1
+  # Adapted from here: https://www.commandlinefu.com/commands/view/14651/determine-if-a-port-is-open-with-bash
+  (: < /dev/tcp/127.0.0.1/"$port") &>/dev/null && return 0 || return 1
+}
+
+error() {
+  local message=$1
+  printf "💀 ${RED}  $message${NO_COLOR}\n"
+}
+
+warning() {
+  local message=$1
+  printf "⚠️  ${YELLOW}  $message ${NO_COLOR}\n"
+}
+
+info() {
+  local message=$1
+  printf "ℹ️    $message\n"
+}
+
+progress() {
+  total=6
+  step=$1
+  icon=$2
+  message=$3
+  printf "[%s/%s] %s %s" "$step" "$total" "$icon" "$message"
+}
+
+clear() {
+  printf "${CLEAR_LINE}"
+}
+
+on_exit() {
+  local exit_code=$?
+  clear
+  if [[ "$exit_code" -eq 0 ]]; then
+    on_success
+  elif [[ "$exit_code" -eq 101 ]]; then
+    printf "\n❌${RED}   Setup failed${NO_COLOR}\n"
+  else
+    on_error
+  fi
+}
+
+on_error() {
+  local errors
+  errors=$(cat "$LOG_FILE")
+  rm "$LOG_FILE"
+  local colored_errors
+  colored_errors=$(printf "${YELLOW}$errors${NO_COLOR}")
+  echo
+  printf "\n❌${RED}  Setup exited with errors:${NO_COLOR}\n"
+  cat <<EOF
+  ------
+  $colored_errors
+  ------
+  Setup has failed with errors.
+EOF
+}
+
+on_success() {
+  printf "\n🎉${GREEN}  Setup finished!${NO_COLOR}\n"
+  cat <<EOF
+  In case you haven't already, check out the Meistertask Backend section in the
+handbook for more information about this project. Happy coding!
+EOF
+}
+
+trap on_exit EXIT
+
+main "$@"

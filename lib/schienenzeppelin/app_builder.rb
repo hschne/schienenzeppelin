@@ -45,5 +45,8 @@ module Schienenzeppelin
     def add_gems
       Schienenzeppelin::Generators::Dotenv.new.invoke_all
     end
+
+    private
+
   end
 end

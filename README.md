@@ -60,9 +60,9 @@ Schienenzeppelin comes with support for the [asdf version manager](https://asdf-
 
 Schienenzeppelin provides a custom `.gitignore` that specifically tailored to your app.
 
-#### Opinionated Style 
+#### Rubocop
 
-Creating your app with Schienenzeppelin will automatically create a minimal set of Rubocop rules for both your production and test code.
+Creating your app with Schienenzeppelin will automatically add Rubocop and a minimal set of Rubocop rules for both your production and test code.
 
 #### Webpacker
 
