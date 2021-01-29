@@ -12,58 +12,57 @@ LOG_FILE=$(mktemp /tmp/<%= app_name %>-setup-XXXXXX)
 
 # Emojis from https://graphemica.com/
 main() {
-progress 1 🔎 "Checking dependencies"
+  progress 1 🔎 "Checking dependencies"
 
-if [[ ! $(command -v ruby) ]]; then
+  if [[ ! $(command -v ruby) ]]; then
+    clear
+    error "Ruby <%= RUBY_VERSION %> is required but not currently installed"
+    exit 101
+  fi
+
+  if [[ ! $(ruby --version) =~ <%= RUBY_VERSION %> ]]; then
+    clear
+    error "Your version of ruby does not match the required version <%= RUBY_VERSION %>"
+    exit 101
+  fi
+
+  if [[ ! $(command -v node) ]]; then
+    clear
+    error "Node is required but not currently installed"
+    exit 101
+  fi
+
+  if [[ ! $(command -v yarn) ]]; then
+    clear
+    error "Yarn is required but not currently installed"
+    exit 101
+  fi
+
   clear
-  error "Ruby <%= RUBY_VERSION %> is required but not currently installed"
-  exit 101
-fi
+  progress 2 📦 "Installing bundler"
+  gem install bundler 2> "$LOG_FILE" 1> /dev/null
 
-if [[ ! $(ruby --version) =~ 2.6.6 ]]; then
   clear
-  error "Your version of ruby does not match the required version <%= RUBY_VERSION %>"
-  exit 101
-fi
+  progress 3 💎 "Installing gems"
+  bundle install 2> "$LOG_FILE" 1> /dev/null
 
-if [[ ! $(command -v node) ]]; then
   clear
-  error "Node is required but not currently installed"
-  exit 101
-fi
+  progress 4 ⏳ "Installing yarn packages"
+  yarn 2> "$LOG_FILE" 1> /dev/null
 
-if [[ ! $(command -v yarn) ]]; then
   clear
-  error "Yarn is required but not currently installed"
-  exit 101
-fi
+  progress 5 🌐 "Checking database"
+  <% db_port = { postgresql: 5432, mysql: 3306}[options[:database].to_sym] %>
+  if ! is_port_open <%= db_port %>; then
+    clear
+    error "Database be running under port <%= db_port %> but was not found"
+    info "In order to continue the setup you require a running database server"
+    exit 101
+  fi
 
-clear
-progress 2 📦 "Installing bundler"
-gem install bundler 2> "$LOG_FILE" 1> /dev/null
-
-clear
-progress 3 💎 "Installing gems"
-bundle install 2> "$LOG_FILE" 1> /dev/null
-
-clear
-progress 4 ⏳ "Installing yarn packages"
-yarn 2> "$LOG_FILE" 1> /dev/null
-
-clear
-progress 5 🌐 "Checking database"
-<% db_port = { postgresql: 5432, mysql: 3306}[options[:database].to_sym] %>
-if ! is_port_open <%= db_port %>; then
   clear
-  error "Database be running under port <%= db_port %> but was not found"
-  info "In order to continue the setup you require a running database server"
-  exit 101
-fi
-
-clear
-progress 6 💾 "Setting up databases"
-rails db:setup 2> "$LOG_FILE" 1> /dev/null
-
+  progress 6 💾 "Setting up databases"
+  rails db:setup 2> "$LOG_FILE" 1> /dev/null
 }
 
 libary_exists() {
