@@ -10,11 +10,11 @@ module Schienenzeppelin
 
     class_option :skip_active_job,
                  type: :boolean, default: true,
-                 desc: "Skip Active Job"
+                 desc: 'Skip Active Job'
 
     class_option :skip_sidekiq,
                  type: :boolean, default: false,
-                 desc: "Skip Sidekiq"
+                 desc: 'Skip Sidekiq'
 
     def create_config_files
       super
@@ -37,6 +37,7 @@ module Schienenzeppelin
     end
 
     def finish_template
+      gem 'schienenzeppelin', path: '/home/hschne/Source/schienenzeppelin'
       build(:gems)
       super
     end

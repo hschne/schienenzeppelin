@@ -8,7 +8,7 @@
     - Pundit - OK
     - JB - OK
     - OJ - OK
-    - Sidekiq 
+    - Sidekiq - OK
     - TailwindCSS
     - Factorybot
     - Rspec
@@ -18,4 +18,7 @@
 - Schienenzeppelin repo CI & create tests
 - Stand-alone generators & decent namespacing
 ## Phase 3
+- Cleanup: 
+    - Nicely order gems in gemfile
+- Sidekiq dev command
 - More customiziation options

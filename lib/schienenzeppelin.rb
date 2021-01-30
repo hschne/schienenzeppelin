@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'rails/command/base'
 require 'rails/generators/app_base'
 require 'rails/generators'
 require 'rails/generators/app_name'

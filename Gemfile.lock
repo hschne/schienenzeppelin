@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    Schienenzeppelin (0.1)
+    schienenzeppelin (0.1)
       rails (~> 6.1.1)
 
 GEM
@@ -174,11 +174,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  Schienenzeppelin!
   rake (~> 13.0)
   rspec (~> 3.10)
   rubocop (~> 0.80)
   rubocop-rspec (~> 1.40)
+  schienenzeppelin!
 
 BUNDLED WITH
    2.2.7
