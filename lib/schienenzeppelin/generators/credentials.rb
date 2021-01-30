@@ -6,7 +6,6 @@ module Schienenzeppelin
       def create_credentials
         create_credential_files('config/master.key', 'config/credentials.yml.enc')
         create_credential_files('config/credentials/production.key', 'config/credentials/production.yml.enc')
-
       end
 
       private
@@ -31,14 +30,18 @@ module Schienenzeppelin
         context = instance_eval('binding', __FILE__, __LINE__)
         source = File.expand_path(find_in_source_paths('config/credentials.yml.erb'))
         match = ERB.version.match(/(\d+\.\d+\.\d+)/)
-        capturable_erb = if match && match[1] >= '2.2.0' # Ruby 2.6+
-                           CapturableERB.new(::File.binread(source), trim_mode: '-', eoutvar: '@output_buffer')
-                         else
-                           CapturableERB.new(::File.binread(source), nil, '-', '@output_buffer')
-                         end
+        capturable_erb = capturable_erb(match, source)
         capturable_erb.tap do |erb|
           erb.filename = source
         end.result(context)
+      end
+
+      def capturable_erb(match, source)
+        if match && match[1] >= '2.2.0' # Ruby 2.6+
+          CapturableERB.new(::File.binread(source), trim_mode: '-', eoutvar: '@output_buffer')
+        else
+          CapturableERB.new(::File.binread(source), nil, '-', '@output_buffer')
+        end
       end
     end
   end

@@ -8,6 +8,19 @@ module Schienenzeppelin
                  default: 'postgresql',
                  desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
 
+    class_option :skip_active_job,
+                 type: :boolean, default: true,
+                 desc: "Skip Active Job"
+
+    class_option :skip_sidekiq,
+                 type: :boolean, default: false,
+                 desc: "Skip Sidekiq"
+
+    def create_config_files
+      super
+      configure_generators
+    end
+
     def create_root_files
       super
 
@@ -24,7 +37,7 @@ module Schienenzeppelin
     end
 
     def finish_template
-      build(:dotenv)
+      build(:gems)
       super
     end
 
@@ -40,7 +53,24 @@ module Schienenzeppelin
 
     private
 
-    def gemfile_entries # :doc:
+    def configure_generators
+      generators = <<-RUBY
+    config.generators do |generate|
+        generate.helper false
+        generate.javascripts false
+        generate.request_specs false
+        generate.routing_specs false
+        generate.stylesheets false
+        generate.test_framework :rspec
+        generate.view_specs false
+        generate.jb true
+    end
+      RUBY
+
+      inject_into_file 'config/application.rb', generators, before: "  end\n"
+    end
+
+    def gemfile_entries
       [rails_gemfile_entry,
        database_gemfile_entry,
        web_server_gemfile_entry,

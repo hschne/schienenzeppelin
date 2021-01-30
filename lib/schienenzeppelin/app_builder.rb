@@ -4,8 +4,7 @@ module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
     def bin
       super
-      remove_file 'bin/setup'
-      template 'bin/setup.erb', 'bin/setup'
+      template 'bin/setup.erb', 'bin/setup', force: true
     end
 
     def credentials
@@ -46,8 +45,12 @@ module Schienenzeppelin
       end
     end
 
-    def dotenv
+    def gems
       Schienenzeppelin::Generators::Dotenv.new.invoke_all
+      Schienenzeppelin::Generators::Pundit.new.invoke_all
+      Schienenzeppelin::Generators::Jb.new.invoke_all
+      Schienenzeppelin::Generators::Oj.new.invoke_all
+      Schienenzeppelin::Generators::Sidekiq.new.invoke_all
     end
   end
 end

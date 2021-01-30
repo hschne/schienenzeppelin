@@ -91,7 +91,7 @@ Webpacker is enabled per default.
 - Dotenv: Customized settings - OK
 - Using .tool_versions for asdf version manager - OK
 - Improved gitignore - OK
-- Preconfigured vault secret file
+- Preconfigured vault secret file - OK
 - Bullet
 - Byebug
 - Opinionated RuboCop setup
@@ -107,8 +107,8 @@ Webpacker is enabled per default.
 
 - `./bin/deploy` script
 - Github Action workflow for CI
-- Dockerfile
-- Docker compose file
+- Dockerfile - OK 
+- Docker compose file - OK
 
 ## Usage
 

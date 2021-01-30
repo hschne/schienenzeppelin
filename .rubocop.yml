@@ -3,6 +3,10 @@ require: rubocop-rspec
 Naming/AccessorMethodName:
   Enabled: false
 
+Metrics/MethodLength:
+  CountAsOne: ['array', 'heredoc']
+  ExcludedMethods: ['describe', 'context']
+
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context']
 
