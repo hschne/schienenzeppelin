@@ -32,6 +32,13 @@ gem 'jb', '~> 0.8'
 gem 'oj', '~> 3.11'
 # Minimal and simple authorization through OO
 gem 'pundit', '~> 2.1'
+# A Rails engine for static pages
+gem 'high_voltage', '~> 3.1'
+# Tailwind CSS for Rails
+gem 'tailwindcss-rails'
+
+# Simple, efficient background processing alternative to ActiveJob
+gem 'sidekiq', '~> 6.1'
 
 <% if depend_on_bootsnap? -%>
 # Reduces boot times through caching; required in config/boot.rb

@@ -45,6 +45,7 @@ module Schienenzeppelin
 
       build(:irbrc)
       build(:foreman)
+      build(:dotenv)
       build(:docker)
       build(:docker_compose)
     end
@@ -63,9 +64,14 @@ module Schienenzeppelin
     def finish_template
       super
       # These require the presence of config/controllers, so they must be done after everything else
+      build(:high_voltage)
       build(:pundit)
       build(:services) unless options[:skip_services]
       build(:sidekiq)
+    end
+
+    def after_install
+      rails_command('tailwindcss:install')
     end
 
     def self.banner

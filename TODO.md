@@ -15,7 +15,11 @@
     - Service Objects - OK
     - TailwindCSS
     - Hotwire
-    - High Voltage
+    - High Voltage - OK
+    - Lograge 
+    - Custom views ready
+    - Custom error pages
+    - Admin gem
 - Deployment & CI
 - Documenation
 - Schienenzeppelin repo CI & create tests

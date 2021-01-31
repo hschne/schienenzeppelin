@@ -81,6 +81,10 @@ module Schienenzeppelin
       template 'spec/support/shoulda_matchers.rb'
     end
 
+    def high_voltage
+      Schienenzeppelin::Helpers::HighVoltage.apply
+    end
+
     def factory_bot
       Schienenzeppelin::Helpers::FactoryBot.apply
     end

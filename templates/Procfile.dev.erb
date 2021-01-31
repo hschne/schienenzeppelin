@@ -1,6 +1,6 @@
-web: bundle exec rails server -p 3000
-<% unless options[:skip_sidekiq] %>
-sidekiq: bundle exec sidekiq
-<% end %>
-webpack: bundle exec bin/webpack-dev-server
 docker: docker-compose up --scale <%= app_name %>=0
+<%- unless options[:skip_sidekiq] -%>
+sidekiq: bundle exec sidekiq
+<% end -%>
+webpack: bundle exec bin/webpack-dev-server
+web: bundle exec rails server -p 3000
