@@ -12,6 +12,7 @@ module Schienenzeppelin
     end
 
     def credentials
+      super
       # This sets up credentials using a custom template for both development and production use
       Schienenzeppelin::Helpers::Credentials.apply
     end
@@ -60,12 +61,28 @@ module Schienenzeppelin
       end
     end
 
+    def services
+      directory 'app/services', 'app/services'
+    end
+
     def sidekiq
-      Schienenzeppelin::Helpers::Sidekiq.apply
+      Schienenzeppelin::Helpers::Sidekiq
     end
 
     def pundit
       Schienenzeppelin::Helpers::Pundit.apply
+    end
+
+    def rspec
+      Schienenzeppelin::Helpers::Rspec.apply
+    end
+
+    def shoulda
+      template 'spec/support/shoulda_matchers.rb'
+    end
+
+    def factory_bot
+      Schienenzeppelin::Helpers::FactoryBot.apply
     end
   end
 end

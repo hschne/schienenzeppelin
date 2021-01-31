@@ -9,16 +9,17 @@
     - JB - OK
     - OJ - OK
     - Sidekiq - OK
-    - Factorybot
-    - Rspec
-    - Rspec Mocks & Matchers
-    - Service Objects
+    - Factorybot - OK
+    - Rspec - OK
+    - Rspec Mocks & Matchers - OK
+    - Service Objects - OK
     - TailwindCSS
+    - Hotwire
+    - High Voltage
 - Deployment & CI
+- Documenation
 - Schienenzeppelin repo CI & create tests
-- Stand-alone generators & decent namespacing
 ## Phase 3
-- Cleanup: 
-    - Nicely order gems in gemfile
+- Adding stuff to existing rails app? 
 - Sidekiq dev command
 - More customiziation options

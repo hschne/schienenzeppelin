@@ -53,16 +53,19 @@ module Schienenzeppelin
       super
     end
 
+    def create_test_files
+      build(:test) unless options[:skip_test]
+      build(:rspec) unless options[:skip_rspec]
+      build(:factory_bot) unless options[:skip_factory_bot]
+      build(:shoulda) unless options[:skip_shoulda]
+    end
+
     def finish_template
       super
       # These require the presence of config/controllers, so they must be done after everything else
       build(:pundit)
+      build(:services) unless options[:skip_services]
       build(:sidekiq)
-    end
-
-    def run_installs
-      # These steps rely on gems being installed, this is executed at the end of the generator
-      generate "rspec:install" unless options[:skip_rspec]
     end
 
     def self.banner
