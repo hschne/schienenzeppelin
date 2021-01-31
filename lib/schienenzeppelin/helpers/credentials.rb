@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Generators
-    class Credentials < GeneratorBase
-      def create_credentials
+  module Helpers
+    class Credentials < HelperBase
+      def apply
         create_credential_files('config/master.key', 'config/credentials.yml.enc')
         create_credential_files('config/credentials/production.key', 'config/credentials/production.yml.enc')
       end
@@ -11,7 +11,7 @@ module Schienenzeppelin
       private
 
       def create_credential_files(key_path, file_path)
-        encryption_key_file_generator.add_key_file(key_path)
+        encryption_key_file_generator.add_key_file_silently(key_path)
         require 'active_support/encrypted_file'
         ActiveSupport::EncryptedFile.new(
           content_path: file_path,

@@ -12,9 +12,28 @@ module Schienenzeppelin
                  type: :boolean, default: true,
                  desc: 'Skip Active Job'
 
+    class_option :skip_jbuilder,
+                 type: :boolean,
+                 default: true,
+                 desc: "Skip jbuilder gem"
+
+    class_option :skip_test,
+                 type: :boolean,
+                 aliases: "-T", default: true,
+                 desc: "Skip test files"
+
     class_option :skip_sidekiq,
                  type: :boolean, default: false,
-                 desc: 'Skip Sidekiq'
+                 desc: 'Skip sidekiq'
+
+    class_option :skip_rspec,
+                 type: :boolean,
+                 aliases: "-T", default: false,
+                 desc: "Skip rspec"
+
+    def initialize(*args)
+      super
+    end
 
     def create_config_files
       super
@@ -30,16 +49,20 @@ module Schienenzeppelin
       build(:docker_compose)
     end
 
-    def credentials
-      return if options[:pretend] || options[:dummy_app]
-
-      build(:credentials)
+    def create_credentials
+      super
     end
 
     def finish_template
-      gem 'schienenzeppelin', path: '/home/hschne/Source/schienenzeppelin'
-      build(:gems)
       super
+      # These require the presence of config/controllers, so they must be done after everything else
+      build(:pundit)
+      build(:sidekiq)
+    end
+
+    def run_installs
+      # These steps rely on gems being installed, this is executed at the end of the generator
+      generate "rspec:install" unless options[:skip_rspec]
     end
 
     def self.banner
@@ -65,22 +88,11 @@ module Schienenzeppelin
         generate.test_framework :rspec
         generate.view_specs false
         generate.jb true
+        generate.factory_bot true
     end
       RUBY
 
       inject_into_file 'config/application.rb', generators, before: "  end\n"
-    end
-
-    def gemfile_entries
-      [rails_gemfile_entry,
-       database_gemfile_entry,
-       web_server_gemfile_entry,
-       assets_gemfile_entry,
-       webpacker_gemfile_entry,
-       javascript_gemfile_entry,
-       psych_gemfile_entry,
-       cable_gemfile_entry,
-       @extra_entries].flatten.find_all(&@gem_filter)
     end
   end
 end

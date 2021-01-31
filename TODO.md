@@ -9,11 +9,11 @@
     - JB - OK
     - OJ - OK
     - Sidekiq - OK
-    - TailwindCSS
     - Factorybot
     - Rspec
     - Rspec Mocks & Matchers
     - Service Objects
+    - TailwindCSS
 - Deployment & CI
 - Schienenzeppelin repo CI & create tests
 - Stand-alone generators & decent namespacing

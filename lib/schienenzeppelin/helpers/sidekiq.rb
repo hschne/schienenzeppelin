@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Generators
-    class Sidekiq < GeneratorBase
-      def add_gem
-        gem 'sidekiq'
+  module Helpers
+    class Sidekiq < HelperBase
+      def apply
         empty_directory 'app/workers'
-
         inject_into_file 'config/environments/development.rb', before: "end\n" do
           <<-RUBY
   if Rails.root.join('tmp', 'sidekiq-dev.txt').exist?

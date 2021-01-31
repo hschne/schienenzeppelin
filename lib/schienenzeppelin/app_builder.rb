@@ -2,13 +2,18 @@
 
 module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
+    def app
+      super
+    end
+
     def bin
       super
       template 'bin/setup.erb', 'bin/setup', force: true
     end
 
     def credentials
-      Schienenzeppelin::Generators::Credentials.new.invoke_all
+      # This sets up credentials using a custom template for both development and production use
+      Schienenzeppelin::Helpers::Credentials.apply
     end
 
     def readme
@@ -17,6 +22,10 @@ module Schienenzeppelin
 
     def ruby_version
       template '.tool-versions.erb', '.tool-versions'
+    end
+
+    def gemfile
+      template 'Gemfile.erb', 'Gemfile'
     end
 
     def gitignore
@@ -28,7 +37,13 @@ module Schienenzeppelin
     end
 
     def docker
-      Schienenzeppelin::Generators::Docker.new.invoke_all
+      template 'Dockerfile.erb', 'Dockerfile'
+      template '.dockerignore.erb', '.dockerignore'
+      template 'docker-compose.yml.erb', 'docker-compose.yml'
+    end
+
+    def dotenv
+      template '.env.development.erb', '.env.development'
     end
 
     def foreman
@@ -45,12 +60,12 @@ module Schienenzeppelin
       end
     end
 
-    def gems
-      Schienenzeppelin::Generators::Dotenv.new.invoke_all
-      Schienenzeppelin::Generators::Pundit.new.invoke_all
-      Schienenzeppelin::Generators::Jb.new.invoke_all
-      Schienenzeppelin::Generators::Oj.new.invoke_all
-      Schienenzeppelin::Generators::Sidekiq.new.invoke_all
+    def sidekiq
+      Schienenzeppelin::Helpers::Sidekiq.apply
+    end
+
+    def pundit
+      Schienenzeppelin::Helpers::Pundit.apply
     end
   end
 end
