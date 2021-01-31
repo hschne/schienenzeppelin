@@ -13,13 +13,13 @@
     - Rspec - OK
     - Rspec Mocks & Matchers - OK
     - Service Objects - OK
-    - TailwindCSS
+    - TailwindCSS - OK
     - Hotwire
     - High Voltage - OK
-    - Lograge 
-    - Custom views ready
-    - Custom error pages
-    - Admin gem
+    - Lograge - OK
+    - Custom homepage & scaffold
+    - Custom error pages ?
+    - Admin gem ?
 - Deployment & CI
 - Documenation
 - Schienenzeppelin repo CI & create tests

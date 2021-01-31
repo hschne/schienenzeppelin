@@ -61,6 +61,10 @@ module Schienenzeppelin
       end
     end
 
+    def lograge
+      template 'config/initializers/lograge.rb'
+    end
+
     def services
       directory 'app/services', 'app/services'
     end
