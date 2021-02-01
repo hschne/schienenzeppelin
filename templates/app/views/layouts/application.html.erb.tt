@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= camelized %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%%= csrf_meta_tags %>
+  <%%= csp_meta_tag %>
+
+  <%- if options[:skip_javascript] -%>
+    <%%= stylesheet_link_tag 'application' %>
+  <%- else -%>
+    <%- unless options[:skip_turbolinks] -%>
+      <%%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%- else -%>
+      <%%= stylesheet_link_tag 'application' %>
+      <%%= javascript_pack_tag 'application' %>
+    <%- end -%>
+  <%- end -%>
+</head>
+
+<body class="flex flex-col min-h-screen">
+<%%= render 'shared/navbar' %>
+<%%= render 'shared/flashes' %>
+<main class="flex-grow">
+  <%%= yield %>
+</main>
+<%%= render 'shared/footer' %>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div class="py-20" style="background: linear-gradient(90deg, #386eb1 0%, #0b9367 100%)">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-6xl font-bold mb-2 text-white">
+      <%= camelized %>
+    </h2>
+    <h3 class="text-2xl mb-8 text-gray-200">
+      Created with <a class="underline" href="https://github.com/hschne/schienenzeppelin">Schienenzeppelin</a>
+    </h3>
+
+    <a href="https://github.com/hschne/schienenzeppelin"></a>
+    <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+      View Documentation
+    </button>
+  </div>
+</div>
+
+<section class="container mx-auto px-6 p-10 text-center">
+  <h2 class="text-4xl font-bold text-gray-800">Ready to do some magic?</h2>
+</section>
+
+

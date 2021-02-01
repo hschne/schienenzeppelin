@@ -38,6 +38,8 @@ gem 'pundit', '~> 2.1'
 gem 'high_voltage', '~> 3.1'
 # Tailwind CSS for Rails
 gem 'tailwindcss-rails'
+# Embedded SVGs for easy styling
+gem 'inline_svg'
 
 # Simple, efficient background processing alternative to ActiveJob
 gem 'sidekiq', '~> 6.1'
@@ -89,7 +91,7 @@ group :development do
 end
 
 group :test do
-<%- unless options[:skip_shoulda] %>
+<%- unless options[:skip_shoulda] -%>
   gem "shoulda-matchers"
 <% end -%>
 <%- if depends_on_system_test? -%>

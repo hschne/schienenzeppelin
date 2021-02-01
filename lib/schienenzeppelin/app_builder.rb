@@ -4,6 +4,7 @@ module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
     def app
       super
+      Schienenzeppelin::Helpers::Views.apply
     end
 
     def bin
@@ -66,11 +67,11 @@ module Schienenzeppelin
     end
 
     def services
-      directory 'app/services', 'app/services'
+      Schienenzeppelin::Helpers::Services.apply
     end
 
     def sidekiq
-      Schienenzeppelin::Helpers::Sidekiq
+      Schienenzeppelin::Helpers::Sidekiq.apply
     end
 
     def pundit

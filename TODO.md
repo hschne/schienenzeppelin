@@ -18,12 +18,18 @@
     - High Voltage - OK
     - Lograge - OK
     - Custom homepage & scaffold
-    - Custom error pages ?
-    - Admin gem ?
+    - Inline SVG - OK
+    - Error pages
 - Deployment & CI
 - Documenation
 - Schienenzeppelin repo CI & create tests
 ## Phase 3
 - Adding stuff to existing rails app? 
 - Sidekiq dev command
-- More customiziation options
+- More customiziation options: Loads of skips
+
+- Goodies for Businessk: 
+    - Admin pages
+    - Devise
+    - Devise
+    - https://dev.to/citronak/modern-rails-flash-messages-part-1-viewcomponent-stimulus-tailwind-css-3alm

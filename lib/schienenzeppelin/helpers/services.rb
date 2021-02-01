@@ -2,9 +2,9 @@
 
 module Schienenzeppelin
   module Helpers
-    class HighVoltage < HelperBase
+    class Services < HelperBase
       def apply
-        template('config/initializers/high_voltage.rb')
+        directory 'app/services', 'app/services'
       end
     end
   end
