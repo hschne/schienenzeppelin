@@ -1,0 +1,28 @@
+<%%= form_with(model: <%= model_resource_name %>) do |form| %>
+  <%%= render "error_messages", resource: form.object %>
+
+<% attributes.each do |attribute| -%>
+  <div class="mb-6">
+<% if attribute.password_digest? -%>
+    <%%= form.label :password, class: "label" %>
+    <%%= form.password_field :password, class: "input" %>
+  </div>
+
+  <div class="mb-6">
+    <%%= form.label :password_confirmation, class: "label" %>
+    <%%= form.password_field :password_confirmation, class: "input" %>
+<% else %>
+    <%%= form.label :<%= attribute.column_name %>, class: "label" %>
+    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class: "input" %>
+<% end %>
+  </div>
+
+<% end -%>
+  <div class="mb-6 flex justify-between items-center">
+    <%%= form.button class: "btn btn-default" %>
+
+    <%% if form.object.persisted? %>
+      <%%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
+    <%% end %>
+  </div>
+<%% end %>

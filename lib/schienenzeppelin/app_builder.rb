@@ -5,6 +5,7 @@ module Schienenzeppelin
     def app
       super
       Schienenzeppelin::Helpers::Views.apply
+      Schienenzeppelin::Helpers::Scaffold.apply
     end
 
     def bin

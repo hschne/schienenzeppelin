@@ -1,0 +1,11 @@
+<div class="container mx-auto my-8 px-4">
+  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+    <p class="text-lg font-semibold"><%= attribute.human_name %>:</p>
+    <p class="leading-normal"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
+
+  <% end -%>
+  <div class="flex items-center justify-start mt-6">
+    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-default mr-4" %>
+    <%%= link_to 'Back', <%= index_helper %>_path, class: "btn btn-default" %>
+  </div>
+</div>
