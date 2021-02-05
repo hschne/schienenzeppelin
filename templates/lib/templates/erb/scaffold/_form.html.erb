@@ -27,10 +27,10 @@
     </div>
 
 <% end -%>
-<div class="mb-6 flex justify-between items-center">
+<div class="mt-2 flex justify-between items-center">
   <%%= link_to 'Back', <%= index_helper %>_path, class: "btn btn-default" %>
   <div class="flex">
-    <%%= form.button class: "btn btn-default mr-2" %>
+    <%%= form.button class: "btn btn-default" %>
     <%% if form.object.persisted? %>
     <%%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" }, class: "btn btn-warn" %>
     <%% end %>

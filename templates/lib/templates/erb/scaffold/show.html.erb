@@ -9,7 +9,7 @@
     <div class="flex items-center justify-between mt-4">
       <%%= link_to 'Back', <%= index_helper %>_path, class: "btn btn-default" %>
       <div>
-        <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-default mr-4" %>
+        <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-default" %>
         <%%= link_to 'Destroy', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-warn" %>
       </div>
     </div>
