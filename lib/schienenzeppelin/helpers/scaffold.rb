@@ -4,7 +4,7 @@ module Schienenzeppelin
   module Helpers
     class Scaffold < HelperBase
       def apply
-        directory 'lib/templates', 'lib/templates'
+        directory 'lib', 'lib'
       end
     end
   end

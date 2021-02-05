@@ -72,7 +72,8 @@ module Schienenzeppelin
     end
 
     def after_install
-      rails_command('tailwindcss:install')
+      Schienenzeppelin::Helpers::Tailwind.apply
+      rails_command('hotwire:install')
     end
 
     def self.banner
