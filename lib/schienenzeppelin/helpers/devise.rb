@@ -5,8 +5,10 @@ module Schienenzeppelin
     class Devise < HelperBase
       def apply
         generate('devise:install')
-        generate(:devise, 'User', 'admin:boolean')
+        generate(:devise, 'User', 'name', 'admin:boolean')
         directory('app/views/devise', 'app/views/devise')
+        # TODO: If hotwire enabled
+        template('config/initializers/devise.rb')
 
         environment("config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'development')
 

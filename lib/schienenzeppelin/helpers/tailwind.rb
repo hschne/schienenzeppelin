@@ -5,27 +5,11 @@ module Schienenzeppelin
     class Tailwind < HelperBase
       def apply
         rails_command('tailwindcss:install')
+        template('app/javascript/stylesheets/components.scss')
         insert_into_file 'app/javascript/stylesheets/application.scss' do
-          <<-CSS
-            .btn {
-              @apply font-bold py-2 px-4 rounded;
-            }
+          <<~CSS
 
-            .btn-default {
-              @apply bg-blue-500 text-white;
-            }
-
-            .btn-blue:hover {
-              @apply bg-blue-700;
-            }
-
-            .btn-warn {
-              @apply bg-red-500 text-white;
-            }
-
-            .btn-warn:hover {
-              @apply bg-red-700;
-            }
+            @import "components";
           CSS
         end
       end

@@ -14,22 +14,25 @@
     - Rspec Mocks & Matchers - OK
     - Service Objects - OK
     - TailwindCSS - OK
-    - Hotwire
+    - Hotwire - OK
     - High Voltage - OK
     - Lograge - OK
-    - Custom homepage & scaffold
+    - Custom homepage & scaffold - OK
     - Inline SVG - OK
     - Error pages
+    - Devise - OK
+- Loads of Documentation
 - Deployment & CI
-- Documenation
 - Schienenzeppelin repo CI & create tests
+- Make everything skippable
 ## Phase 3
-- Adding stuff to existing rails app? 
 - Sidekiq dev command
-- More customiziation options: Loads of skips
+- Make docker
 
 - Goodies for Businessk: 
     - Admin pages
-    - Devise
-    - Devise
+    - Payments
+    - Monitoring (Skylight, ...)
+    - Reporting (Bugsnag, ...)
+    - Dockerfile
     - https://dev.to/citronak/modern-rails-flash-messages-part-1-viewcomponent-stimulus-tailwind-css-3alm
