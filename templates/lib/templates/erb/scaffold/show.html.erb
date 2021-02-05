@@ -1,13 +1,12 @@
 <div class="container mx-auto my-8 px-4">
   <h1 class="text-4xl"><%= plural_table_name.titleize %></h1>
 
-  <div class="bg-white rounded shadow py-4">
+  <div class="bg-white rounded shadow p-4">
     <% attributes.reject(&:password_digest?).each do |attribute| -%>
       <p class="text-lg font-semibold"><%= attribute.human_name %>:</p>
       <p class="leading-normal"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
     <% end -%>
-
-    <div class="flex items-center justify-between mt-6">
+    <div class="flex items-center justify-between mt-4">
       <%%= link_to 'Back', <%= index_helper %>_path, class: "btn btn-default" %>
       <div>
         <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: "btn btn-default mr-4" %>
@@ -15,4 +14,5 @@
       </div>
     </div>
   </div>
+
 </div>

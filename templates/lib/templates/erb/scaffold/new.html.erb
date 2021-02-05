@@ -1,7 +1,7 @@
-<div class="container mx-auto my-8">
+<div class="container mx-auto my-8 px-4">
   <h1 class="text-4xl">New <%= plural_table_name.titleize %></h1>
 
-  <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
-
-  <%%= link_to 'Back', <%= index_helper %>_path, class: "btn btn-default" %>
+  <div class="bg-white rounded shadow p-4">
+    <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
+  </div>
 </div>

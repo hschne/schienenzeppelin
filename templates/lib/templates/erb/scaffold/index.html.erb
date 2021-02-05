@@ -1,7 +1,7 @@
 <div class="container mx-auto my-8 px-4">
   <h1 class="text-4xl"><%= plural_table_name.titleize %></h1>
   <%% if @<%= plural_table_name %>.exists? %>
-  <div class="bg-white rounded shadow py-4">
+  <div class="bg-white rounded shadow p-4">
     <table class="w-full">
       <thead>
       <tr>
@@ -19,7 +19,8 @@
         <% end %>
         <td>
           <%%= link_to "View", <%= singular_table_name %>, class: "btn btn-default" %>
-          <%%= link_to "Edit", edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn btn-default" %>
+          <%%= link_to "Edit", edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn
+          btn-default" %>
         </td>
       </tr>
       <%% end %>
@@ -27,5 +28,7 @@
     </table>
   </div>
   <%% end %>
-  <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path, class: "btn btn-default" %>
+  <span>
+    <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_route_name %>_path, class: "btn btn-default" %>
+  </span>
 </div>
