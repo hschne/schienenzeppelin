@@ -15,12 +15,12 @@ module Schienenzeppelin
     class_option :skip_jbuilder,
                  type: :boolean,
                  default: true,
-                 desc: "Skip jbuilder gem"
+                 desc: 'Skip jbuilder gem'
 
     class_option :skip_test,
                  type: :boolean,
-                 aliases: "-T", default: true,
-                 desc: "Skip test files"
+                 aliases: '-T', default: true,
+                 desc: 'Skip test files'
 
     class_option :skip_sidekiq,
                  type: :boolean, default: false,
@@ -28,8 +28,8 @@ module Schienenzeppelin
 
     class_option :skip_rspec,
                  type: :boolean,
-                 aliases: "-T", default: false,
-                 desc: "Skip rspec"
+                 aliases: '-T', default: false,
+                 desc: 'Skip rspec'
 
     def initialize(*args)
       super
@@ -72,8 +72,9 @@ module Schienenzeppelin
     end
 
     def after_install
+      Schienenzeppelin::Helpers::Devise.apply
+      Schienenzeppelin::Helpers::Hotwire.apply
       Schienenzeppelin::Helpers::Tailwind.apply
-      rails_command('hotwire:install')
     end
 
     def self.banner

@@ -4,7 +4,8 @@ module Schienenzeppelin
   module Helpers
     class Sidekiq < HelperBase
       def apply
-        empty_directory 'app/workers'
+        empty_directory('app/workers')
+        create_file('app/workers/.keep')
         inject_into_file 'config/environments/development.rb', before: "end\n" do
           <<-RUBY
   if Rails.root.join('tmp', 'sidekiq-dev.txt').exist?

@@ -7,7 +7,7 @@ module Schienenzeppelin
     include Rails::Generators::AppName
 
     def self.apply
-      self.new.apply
+      new.apply
     end
 
     def apply
