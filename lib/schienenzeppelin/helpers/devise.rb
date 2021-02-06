@@ -12,6 +12,12 @@ module Schienenzeppelin
           "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }"
         end
 
+        db_changes
+      end
+
+      private
+
+      def db_changes
         in_root do
           migration = Dir.glob('db/migrate/*').max_by { |f| File.mtime(f) }
           gsub_file migration, /:admin/, ':admin, default: false'

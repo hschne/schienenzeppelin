@@ -1,7 +1,7 @@
 <nav>
   <div class="container mx-auto px-6 py-2 flex justify-between items-center">
     <a class="flex align-middle justify-center mt-1 text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
-      <%%= inline_svg_tag('logo.svg', class: "rounded h-12 w-12 mx-2") %>
+      <%%= inline_svg_pack_tag('media/images/logo.svg', class: "rounded h-12 w-12 mx-2") %>
       <p><%= app_name.capitalize %> </p>
     </a>
     <div class="block lg:hidden">

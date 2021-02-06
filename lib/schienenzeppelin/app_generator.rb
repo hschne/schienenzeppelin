@@ -31,10 +31,6 @@ module Schienenzeppelin
                  aliases: '-T', default: false,
                  desc: 'Skip rspec'
 
-    def initialize(*args)
-      super
-    end
-
     def create_config_files
       super
       configure_generators
@@ -48,10 +44,6 @@ module Schienenzeppelin
       build(:dotenv)
       build(:docker)
       build(:docker_compose)
-    end
-
-    def create_credentials
-      super
     end
 
     def create_test_files
@@ -68,7 +60,7 @@ module Schienenzeppelin
       build(:lograge)
       build(:high_voltage)
       build(:pundit)
-      build(:services) unless options[:skip_services]
+      Schienenzeppelin::Helpers::Services.apply unless options[:skip_services]
       build(:sidekiq)
     end
 
@@ -82,6 +74,7 @@ module Schienenzeppelin
       Schienenzeppelin::Helpers::Errors.apply
       Schienenzeppelin::Helpers::Scaffold.apply
 
+      Schienenzeppelin::Helpers::ContinuousIntegration.apply
       Schienenzeppelin::Helpers::Capistrano.apply
     end
 

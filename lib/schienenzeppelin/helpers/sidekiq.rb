@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module Helpers
     class Sidekiq < HelperBase
-      def appl
+      def apply
         say 'Setting up sidekiq'
         empty_directory('app/workers')
         create_file('app/workers/.keep')

@@ -2,10 +2,6 @@
 
 module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
-    def app
-      super
-    end
-
     def bin
       super
       template 'bin/setup.erb', 'bin/setup', force: true
@@ -63,10 +59,6 @@ module Schienenzeppelin
 
     def lograge
       template 'config/initializers/lograge.rb'
-    end
-
-    def services
-      Schienenzeppelin::Helpers::Services.apply
     end
 
     def sidekiq

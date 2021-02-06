@@ -5,10 +5,10 @@ Naming/AccessorMethodName:
 
 Metrics/MethodLength:
   CountAsOne: ['array', 'heredoc']
-  ExcludedMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context']
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context']
 
 Layout/LineLength:
   Max: 120

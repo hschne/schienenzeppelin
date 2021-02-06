@@ -1,0 +1,73 @@
+name: <%= camelized %> CI 🚀
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DATABASE_HOST: localhost
+      DATABASE_USERNAME: <%= app_name %>
+      DATABASE_PASSWORD: <%= app_name %>
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: <%= app_name %>
+          POSTGRES_USER: <%= app_name %>
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: <%= RUBY_VERSION %>
+          bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.9
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          gem install bundler
+          bundle install --jobs 4
+          yarn install
+      - name: Setup databases
+        run: |
+          bin/rails db:setup
+      - name: Run tests
+        run: bin/rails test
+
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install Rubocop
+        run:  |
+          gem install rubocop
+      - name: Get file changes
+        id: file_changes
+        uses: trilom/file-changes-action@v1.2.4
+        with:
+          output: ' '
+
+      - name: Run Rubocop
+        run: |
+          # File changes gives us space seperated file paths. We need to convert those to newlines, and then filter out
+          # any files that are not ruby, and finally feed that to Rubocop.
+          echo ${{ steps.file_changes.outputs.files_modified }} | tr " " "\n" | grep \.rb$ | xargs -r rubocop --force-exclusion

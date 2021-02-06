@@ -6,9 +6,16 @@ module Schienenzeppelin
     include Rails::Generators::Actions
     include Rails::Generators::AppName
 
-    def self.apply
-      new.apply
+    def self.apply(options = {})
+      new(options).apply
     end
+
+    def initialize(options, *)
+      super
+      @options = options
+    end
+
+    private_class_method :new
 
     def apply
       raise NotImplementedError
