@@ -1,67 +1,61 @@
-*.rbc
-capybara-*.html
-.rspec
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/db/*.sqlite3-[0-9]*
-/public/system
-/coverage/
-/spec/tmp
-*.orig
-rerun.txt
-pickle-email-*.html
+# Bridgetown
+output
+.bridgetown-cache
+.bridgetown-metadata
+.bridgetown-webpack
 
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+# Dependency folders
+node_modules
+bower_components
+vendor
 
-# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
-config/initializers/secret_token.rb
-config/master.key
+# Caches
+.sass-cache
+.npm
+.node_repl_history
 
-# Only include if you have production secrets in this file, which is no longer a Rails default
-# config/secrets.yml
-
-# dotenv
-# TODO Comment out this rule if environment variables can be committed
-.env
-
-## Environment normalization:
+# Ignore bundler config.
 /.bundle
-/vendor/bundle
-
-# these should all be checked in to normalize the environment:
-# Gemfile.lock, .ruby-version, .ruby-gemset
-
-# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
-.rvmrc
-
-# if using bower-rails ignore default bower_components path bower.json files
-/vendor/assets/bower_components
-*.bowerrc
-bower.json
-
-# Ignore pow environment settings
-.powenv
 
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore node_modules
-node_modules/
+# dotenv environment variables file
+.env
 
-# Ignore precompiled javascript packs
-/public/packs
-/public/packs-test
-/public/assets
+# Mac files
+.DS_Store
 
-# Ignore yarn files
-/yarn-error.log
+# Yarn
+yarn-error.log
 yarn-debug.log*
+.pnp/
+.pnp.js
+# Yarn Integrity file
 .yarn-integrity
 
-# Ignore uploaded files in development
-/storage/*
-!/storage/.keep
+# Created by https://www.toptal.com/developers/gitignore/api/vim
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim
+
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+!*.svg  # comment out if you don't need vector files
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# End of https://www.toptal.com/developers/gitignore/api/vim
