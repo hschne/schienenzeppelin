@@ -1,4 +1,6 @@
-require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
 
 Naming/AccessorMethodName:
   Enabled: false
@@ -9,6 +11,7 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
+  Exclude: ['**/*.rake']
 
 Layout/LineLength:
   Max: 120
@@ -23,9 +26,9 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
-RSpec/ExampleLength:
-  Exclude:
-    - spec/**/*
-
-RSpec/MultipleExpectations:
-  Max: 2
+#RSpec/ExampleLength:
+#  Exclude:
+#    - spec/**/*
+#
+#RSpec/MultipleExpectations:
+#  Max: 2

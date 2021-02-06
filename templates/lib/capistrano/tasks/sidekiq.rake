@@ -34,4 +34,3 @@ namespace :sidekiq do
     end
   end
 end
-
