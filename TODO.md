@@ -21,8 +21,8 @@
     - Inline SVG - OK
     - Error pages - OK
     - Devise - OK
-    - Annotate models
-- Deployment  - Needs Testing
+    - Annotate models - OK
+- Deployment  - Progress
 - GH CI
 - Schienenzeppelin repo CI & create tests
 ## Phase 3

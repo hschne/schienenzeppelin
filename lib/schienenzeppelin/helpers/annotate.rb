@@ -4,7 +4,7 @@ module Schienenzeppelin
   module Helpers
     class Annotate < HelperBase
       def apply
-        template('lib/tasks/auto_annotate_models.rake')
+        template('lib/tasks/auto_annotate_models.rake', force: true)
       end
     end
   end

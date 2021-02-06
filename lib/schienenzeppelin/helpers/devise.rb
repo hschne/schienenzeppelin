@@ -4,8 +4,8 @@ module Schienenzeppelin
   module Helpers
     class Devise < HelperBase
       def apply
-        generate('devise:install')
-        generate(:devise, 'User', 'name', 'admin:boolean')
+        generate('devise:install', capture: true)
+        generate(:devise, 'User', 'name', 'admin:boolean', capture: true)
         directory('app/views/devise', 'app/views/devise')
 
         inject_into_file 'config/environments/development.rb', before: "end\n" do

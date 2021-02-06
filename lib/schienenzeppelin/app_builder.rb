@@ -4,7 +4,6 @@ module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
     def app
       super
-
     end
 
     def bin

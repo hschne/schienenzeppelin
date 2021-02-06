@@ -9,7 +9,7 @@ module Schienenzeppelin
         template('app/controllers/errors_controller.rb.erb', 'app/controllers/errors_controller.rb')
         # TODO: WIth deployment make sure to add copy capistrano task
         # https://www.marcelofossrj.com/recipe/2019/04/14/custom-errors.html
-        inject_into_file 'config/application.rb', routes, before: "end\n" do
+        inject_into_file 'config/application.rb', before: "  end\n" do
           <<-RUBY
     
     # Enable custom error messages

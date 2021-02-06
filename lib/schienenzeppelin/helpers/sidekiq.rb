@@ -3,7 +3,8 @@
 module Schienenzeppelin
   module Helpers
     class Sidekiq < HelperBase
-      def apply
+      def appl
+        say 'Setting up sidekiq'
         empty_directory('app/workers')
         create_file('app/workers/.keep')
         inject_into_file 'config/environments/development.rb', before: "end\n" do
