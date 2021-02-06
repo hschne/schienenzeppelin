@@ -64,6 +64,7 @@ module Schienenzeppelin
     def finish_template
       super
       # These require the presence of config/controllers, so they must be done after everything else
+      Schienenzeppelin::Helpers::Annotate.apply
       build(:lograge)
       build(:high_voltage)
       build(:pundit)
@@ -80,6 +81,7 @@ module Schienenzeppelin
       # TODO: Re-enable with Rails 6.2
       # Schienenzeppelin::Helpers::Hotwire.apply
       Schienenzeppelin::Helpers::Tailwind.apply
+      Schienenzeppelin::Helpers::Capistrano.apply
     end
 
     def self.banner

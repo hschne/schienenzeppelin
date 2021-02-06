@@ -75,6 +75,8 @@ end
 
 <% end -%>
 group :development do
+  # Add a comment summarizing the current schema to  your code
+  gem 'annotate', '~> 3.1'
 <%- unless options.api? || options.skip_dev_gems? -%>
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   <%- if options.dev? || options.edge? || options.main? -%>
@@ -93,6 +95,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 <% end -%>
+  # Capistrano is used to deploy your application
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
 end
 
 group :test do

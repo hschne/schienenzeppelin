@@ -19,20 +19,26 @@
     - Lograge - OK
     - Custom homepage & scaffold - OK
     - Inline SVG - OK
-    - Error pages
+    - Error pages - OK
     - Devise - OK
-- Loads of Documentation
-- Deployment & CI
+    - Annotate models
+- Deployment  - Needs Testing
+- GH CI
 - Schienenzeppelin repo CI & create tests
-- Make everything skippable
 ## Phase 3
+- Custom Logo
+- Make everything skippable
+- Loads of Documentation
+## Phase 4
 - Sidekiq dev command
 - Make docker
 
-- Goodies for Businessk: 
+- Goodies for Business: 
     - Admin pages
+    - Social Logins
     - Payments
     - Monitoring (Skylight, ...)
+    - Email Providers (Mailgun, ...)
     - Reporting (Bugsnag, ...)
     - Dockerfile
     - https://dev.to/citronak/modern-rails-flash-messages-part-1-viewcomponent-stimulus-tailwind-css-3alm
