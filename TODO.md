@@ -22,20 +22,26 @@
     - Error pages - OK
     - Devise - OK
     - Annotate models - OK
-- Deployment  - Progress
-- GH CI
-- Schienenzeppelin repo CI & create tests
+    - Readme 
+- Deployment - OK
+- GH CI - OK
+- Schienenzeppelin Repo CI (notify gem releases, tests)
+- Tests
 ## Phase 3
 - Custom Logo
 - Make everything skippable
 - Loads of Documentation
-## Phase 4
-- Sidekiq dev command
-- Make docker
+    - Readme
+    - Screencast
+    - GH page? 
 
+## Phase 4
+- Licensing? 
+- Homepage & Newsletter
 - Goodies for Business: 
     - Admin pages
     - Social Logins
+    - Cloud Storage ?
     - Payments
     - Monitoring (Skylight, ...)
     - Email Providers (Mailgun, ...)
