@@ -4,8 +4,7 @@ module Schienenzeppelin
   class AppBuilder < Rails::AppBuilder
     def app
       super
-      Schienenzeppelin::Helpers::Views.apply
-      Schienenzeppelin::Helpers::Scaffold.apply
+
     end
 
     def bin

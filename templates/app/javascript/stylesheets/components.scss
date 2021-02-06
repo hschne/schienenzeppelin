@@ -345,7 +345,7 @@
 
     &:checked ~ label:before {
       content: "";
-      background-image: url('../images/icons/checkmark.svg');
+      background-image: url('~images/checkmark.svg');
       background-size: 10px 10px;
       border-radius: 2px;
       @apply bg-blue-500 border-transparent text-white bg-no-repeat bg-center transition ease-in-out duration-100 shadow-none;

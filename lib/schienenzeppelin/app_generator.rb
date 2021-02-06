@@ -69,11 +69,16 @@ module Schienenzeppelin
       build(:pundit)
       build(:services) unless options[:skip_services]
       build(:sidekiq)
+
+      Schienenzeppelin::Helpers::Home.apply
+      Schienenzeppelin::Helpers::Errors.apply
+      Schienenzeppelin::Helpers::Scaffold.apply
     end
 
     def after_install
       Schienenzeppelin::Helpers::Devise.apply
-      Schienenzeppelin::Helpers::Hotwire.apply
+      # TODO: Re-enable with Rails 6.2
+      # Schienenzeppelin::Helpers::Hotwire.apply
       Schienenzeppelin::Helpers::Tailwind.apply
     end
 

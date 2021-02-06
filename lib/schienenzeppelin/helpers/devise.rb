@@ -7,10 +7,10 @@ module Schienenzeppelin
         generate('devise:install')
         generate(:devise, 'User', 'name', 'admin:boolean')
         directory('app/views/devise', 'app/views/devise')
-        # TODO: If hotwire enabled
-        template('config/initializers/devise.rb')
 
-        environment("config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }", env: 'development')
+        inject_into_file 'config/environments/development.rb', before: "end\n" do
+          "config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }"
+        end
 
         in_root do
           migration = Dir.glob('db/migrate/*').max_by { |f| File.mtime(f) }
@@ -20,7 +20,8 @@ module Schienenzeppelin
           <<~RUBY
             # Create an initial admin user for development
             User.find_or_create_by(email: "admin@admin.com") do |user|
-              user.password = password
+              user.name = 'Admin'
+              user.password = 'password'
               user.admin = true
             end
           RUBY

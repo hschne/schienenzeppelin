@@ -6,9 +6,7 @@
     <h3 class="text-2xl mb-8 text-gray-200">
       Created with <a class="underline" href="https://github.com/hschne/schienenzeppelin">Schienenzeppelin</a>
     </h3>
-
-    <a href="https://github.com/hschne/schienenzeppelin"></a>
-    <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+    <button class="btn-default tracking-wider">
       View Documentation
     </button>
   </div>
