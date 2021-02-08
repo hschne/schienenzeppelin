@@ -1,16 +1,14 @@
 <h1 align="center">Schienenzeppelin</h1>
 
 <p align="center">
-![Ruby](https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg)
-[![Gem Version](https://badge.fury.io/rb/pundit.svg)](http://badge.fury.io/rb/pundit)
-[![Maintainability](https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability)](https://codeclimate.com/github/hschne/graphql-groups/maintainability)
+<img src="https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg"></>
+<img src="https://badge.fury.io/rb/pundit.svg"></>
+<img src="https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability"></>
 </p>
 
 <p align="center">From zero to SaaS in minutes using <a href="https://rubyonrails.org/">Ruby on Rails</a></p>
 
 ![zeppelin](./schienenzeppelin.jpg)
-
-Schienenzeppelin is an opinionated, yet configurable, Ruby on Rails app generator. It is also ̶a̶̶̶ ̶̶̶s̶̶̶h̶̶̶a̶̶̶m̶̶̶e̶̶̶l̶̶̶e̶̶̶s̶̶̶s̶̶̶ ̶̶̶r̶̶̶i̶̶̶p̶̶̶-̶̶̶o̶̶̶f̶̶̶f̶̶̶ ̶̶̶o̶̶̶f̶̶̶ inspired by [Suspenders](https://github.com/thoughtbot/suspenders) and [Jumpstart](https://jumpstartrails.com/).
 
 ## Getting Started
 
