@@ -70,7 +70,7 @@ Schienenzeppelin adds a bunch of scaffolds that you adapt to suit your own needs
 
 ### Backend
 
-### Authentication
+#### Authentication
 
 Devise is already configured if you start your application with Schienenzeppelin. For a smooth first start, `db/seeds.rb` create an admin user, and your navigiation bar already contains links where users can sign in or sign up.
 
@@ -83,7 +83,7 @@ Devise is already configured if you start your application with Schienenzeppelin
 - `app/views/pages/home.html.erb`
 - `config/initializers/devise.rb`
 
-#### Configuration
+##### Configuration
 
 To skip Devise use:
 
@@ -94,7 +94,7 @@ sz --skip-devise myapp
 </p>
 </details>
 
-### Authorization
+#### Authorization
 
 [Pundit](https://github.com/varvet/pundit) provides a simple way to encapsulate authorization logic in your application. You can add new policies to the `app/policies` folder. To generate a new policy run `rails generate pundit:policy`.
 
@@ -104,7 +104,7 @@ To skip Pundit use:
 sz --skip-pundit myapp
 ```
 
-### Background Jobs
+#### Background Jobs
 
 Schienenzeppelin per default foregoes ActiveJob in favor of [Sidekiq](https://github.com/mperham/sidekiq).
 
@@ -223,10 +223,6 @@ While Rails secrets are usually prepared for development, Schienezeppelin sets u
 - Github Action workflow for CI
 - Dockerfile - OK
 - Docker compose file - OK
-
-## Usage
-
-TODO
 
 ## FAQ
 
