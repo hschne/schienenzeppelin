@@ -1,8 +1,10 @@
-<h1 align="center">Schienenzeppelin</h1> 
-<p align="center">From zero to SaaS in minutes using [Ruby on Raisl](https://rubyonrails.org/)</p>
+<h1 align="center">Schienenzeppelin</h1>
+
+<p align="center">From zero to SaaS in minutes using <a href="https://rubyonrails.org/">Ruby on Rails</a></p>
+
 [![Ruby](https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg)
 [![Gem Version](https://badge.fury.io/rb/pundit.svg)](http://badge.fury.io/rb/pundit)
-[![Maintainability](https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability)](https://codeclimate.com/github/hschne/graphql-groups/maintainability) 
+[![Maintainability](https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability)](https://codeclimate.com/github/hschne/graphql-groups/maintainability)
 
 ![zeppelin](./schienenzeppelin.jpg)
 
