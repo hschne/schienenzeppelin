@@ -284,3 +284,7 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/ruby,rails,rubymine+all,vim,emacs
+#
+
+.bridgetown-cache/
+.bridgetown-webpack/
