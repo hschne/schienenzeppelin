@@ -19,4 +19,6 @@ jobs:
           ruby-version: 3.0.0
           bundler-cache: true 
       - name: Check Outdated
-        run: bundle outdated rails
+        run: |
+          bundle config unset deployment
+          bundle outdated rails
