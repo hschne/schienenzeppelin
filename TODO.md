@@ -5,24 +5,8 @@
 - Setup & startup scripts
 ## Phase 2
 - Start additional gems (without customization!)
-    - Pundit - OK
-    - JB - OK
-    - OJ - OK
-    - Sidekiq - OK
-    - Factorybot - OK
-    - Rspec - OK
-    - Rspec Mocks & Matchers - OK
-    - Service Objects - OK
-    - TailwindCSS - OK
-    - Hotwire - OK
-    - High Voltage - OK
-    - Lograge - OK
-    - Custom homepage & scaffold - OK
-    - Inline SVG - OK
-    - Error pages - OK
-    - Devise - OK
-    - Annotate models - OK
     - Template Readme 
+    - Improve scaffold UI (Tailwind)
 - Deployment - OK
 - GH CI - OK
 - Schienenzeppelin Repo CI (notify gem releases, tests)
@@ -35,7 +19,8 @@
     - Screencast
 
 ## Phase 4
-- Make everything skippable
+- Make everything skippable, manage dependencies between items
+- Take advantage of saved config (as rails new does)
 - Licensing? 
 - Homepage & Newsletter
 - Goodies for Business: 
@@ -48,3 +33,8 @@
     - Reporting (Bugsnag, ...)
     - Dockerfile
     - https://dev.to/citronak/modern-rails-flash-messages-part-1-viewcomponent-stimulus-tailwind-css-3alm
+- Configuration wizard via command line
+- Alternative configurations:
+    - Differernt DB
+    - Different BG Jobs
+    - Different Deployment

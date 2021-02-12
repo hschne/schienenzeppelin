@@ -7,7 +7,7 @@
         class="flex items-center mr-2"
         href="<%%= root_path %>">
         <%%= inline_svg_pack_tag('media/images/logo.svg', class: "rounded h-12 w-12 mx-2") %>
-        <p><%= app_name.capitalize %> </p>
+        <p class="font-bold text-lg"><%= app_name.capitalize %> </p>
       </a>
     </div>
     <div class="flex md:hidden">
