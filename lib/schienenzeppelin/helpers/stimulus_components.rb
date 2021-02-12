@@ -2,13 +2,11 @@
 
 module Schienenzeppelin
   module Helpers
-    class Stimulus < HelperBase
+    class StimulusComponents < HelperBase
       def apply
-        rails_command('stimulus:install')
-
+        run('yarn add tailwindcss-stimulus-components')
         inject_into_file('app/javascript/packs/application.js', "require.context('../images', true)") do
           <<~JS
-            // Start StimulusJS
             import { Application } from "stimulus"
             import { definitionsFromContext } from "stimulus/webpack-helpers"
 
@@ -16,7 +14,6 @@ module Schienenzeppelin
             const context = require.context("controllers", true, /.js$/);
             application.load(definitionsFromContext(context));
 
-            // Import and register all TailwindCSS Components
             import { Dropdown, Modal, Tabs, Popover, Toggle, Slideover } from "tailwindcss-stimulus-components"
             application.register('dropdown', Dropdown)
             application.register('modal', Modal)

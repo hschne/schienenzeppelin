@@ -3,7 +3,7 @@
 
 require 'pathname'
 
-source_path = "#{Pathname.new(__FILE__).dirname}../lib".expand_path
+source_path = File.expand_path("#{Pathname.new(__FILE__).dirname}/../lib")
 $LOAD_PATH << source_path
 
 require 'schienenzeppelin'

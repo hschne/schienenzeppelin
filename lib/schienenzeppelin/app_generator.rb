@@ -33,7 +33,7 @@ module Schienenzeppelin
 
     def create_config_files
       super
-      configure_generators
+      Schienenzeppelin::Helpers::Generators.apply
     end
 
     def create_root_files
@@ -70,6 +70,7 @@ module Schienenzeppelin
       # TODO: Re-enable with Rails 6.2
       # Schienenzeppelin::Helpers::Hotwire.apply
       Schienenzeppelin::Helpers::Tailwind.apply
+      Schienenzeppelin::Helpers::StimulusComponents.apply
 
       Schienenzeppelin::Helpers::Home.apply
       Schienenzeppelin::Helpers::Errors.apply
@@ -87,26 +88,6 @@ module Schienenzeppelin
 
     def get_builder_class
       Schienenzeppelin::AppBuilder
-    end
-
-    private
-
-    def configure_generators
-      generators = <<-RUBY
-    config.generators do |generate|
-        generate.helper false
-        generate.javascripts false
-        generate.request_specs false
-        generate.routing_specs false
-        generate.stylesheets false
-        generate.test_framework :rspec
-        generate.view_specs false
-        generate.jb true
-        generate.factory_bot true
-    end
-      RUBY
-
-      inject_into_file 'config/application.rb', generators, before: "  end\n"
     end
   end
 end

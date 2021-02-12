@@ -22,19 +22,20 @@
     - Error pages - OK
     - Devise - OK
     - Annotate models - OK
-    - Readme - OK
+    - Template Readme 
 - Deployment - OK
 - GH CI - OK
 - Schienenzeppelin Repo CI (notify gem releases, tests)
-- Tests
+- Loads of testing
+- Hide generators and scaffolds in sz gem, don't copy as templates. See JB, use railtie
 ## Phase 3
 - Custom Logo
-- Make everything skippable
 - Loads of Documentation
     - Readme - OK
     - Screencast
 
 ## Phase 4
+- Make everything skippable
 - Licensing? 
 - Homepage & Newsletter
 - Goodies for Business: 

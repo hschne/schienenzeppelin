@@ -24,8 +24,7 @@
       data-dropdown-target="menu"
       class="hidden md:flex-grow md:flex w-full md:w-auto text-right md:text-left text-bold mt-5 md:mt-0 border-t-2 border-gray-200 md:border-none">
       <div class="justify-start flex-grow">
-        <!-- SZ Scaffold Placeholder -->
-        <a href="#" class="block md:inline-block p-3 border-b-2 border-gray-100 md:border-none">Home</a>
+        <!-- SZ Link Placeholder -->
       </div>
       <ul class="w-full flex-col md:flex md:flex-row items-center justify-end md:w-auto">
         <%% if user_signed_in? %>

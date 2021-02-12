@@ -1,0 +1,6 @@
+Description:
+    This adds a link to the specified resource to your home page
+
+Example:
+    bin/rails generate navigation resource
+
