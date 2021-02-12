@@ -1,20 +1,33 @@
 # <%= app_name.humanize %>
 
-## Getting Started
+## Running your App
 
-After you have cloned this repo, run this setup script to set up your machine
-with the necessary dependencies to run and test this app:
+The simplest way to start this up is by using [docker-compose](https://docs.docker.com/compose/):
 
-    % ./bin/setup
+```bash
+docker-compose up
+```
 
-It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
-your machine with [this script].
+```
+rails db:setup && rails db:migrate
+rails start
+```
 
-[this script]: https://github.com/thoughtbot/laptop
+Open your browser on [localhost:3000](http://localhost:3000).
 
-After setting up, you can run the application using [Heroku Local]:
+## Development
 
-    % heroku local
+This app was generated using [Schienenzeppelin](https://github.com/hschne/schienenzeppelin) - there are tons of little tweaks to simplify your development workflow.
 
-[Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
+For more details refer to the [Documentation](https://github.com/hschne/schienenzeppelin)
+
+## Deploying
+
+Deploy this application using Capistrano. Make sure you have a server set up and edit [config/production.rb](./config/production.rb). Then run:
+
+```bash
+cap production deploy
+```
+
+For more information you can follow [this guide](https://gorails.com/deploy/ubuntu/20.04)
 

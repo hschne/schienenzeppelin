@@ -1,13 +1,13 @@
 <div class="container mx-auto my-8 px-4">
-  <h1 class="text-4xl"><%= plural_table_name.titleize %></h1>
+  <h1 class="text-4xl mb-2"><%= plural_table_name.titleize %></h1>
   <%% if @<%= plural_table_name %>.exists? %>
-  <div class="bg-white rounded shadow p-4">
+  <div class="bg-white rounded shadow p-3">
     <table class="w-full">
       <thead>
       <tr>
         <% attributes.reject(&:password_digest?).each do |attribute| -%>
-          <th class="p-3 uppercase text-left text-xs text-gray-700"><%= attribute.human_name %></th>
-        <% end %>
+        <th class="p-3 uppercase text-left text-xs text-gray-700"><%= attribute.human_name %></th>
+        <% end -%>
         <th class="p-3 uppercase text-left text-xs text-gray-700">Actions</th>
       </tr>
       </thead>
@@ -15,8 +15,8 @@
       <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
       <tr class="group border-t border-gray-400 hover:bg-gray-100">
         <% attributes.reject(&:password_digest?).each do |attribute| -%>
-          <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
-        <% end %>
+        <td class="p-3"><%%= <%= singular_table_name %>.<%= attribute.column_name %> %></td>
+        <% end -%>
         <td>
           <%%= link_to "View", <%= singular_table_name %>, class: "btn btn-default" %>
           <%%= link_to "Edit", edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: "btn
