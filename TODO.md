@@ -22,7 +22,7 @@
     - Error pages - OK
     - Devise - OK
     - Annotate models - OK
-    - Readme 
+    - Readme - OK
 - Deployment - OK
 - GH CI - OK
 - Schienenzeppelin Repo CI (notify gem releases, tests)
@@ -31,9 +31,8 @@
 - Custom Logo
 - Make everything skippable
 - Loads of Documentation
-    - Readme
+    - Readme - OK
     - Screencast
-    - GH page? 
 
 ## Phase 4
 - Licensing? 

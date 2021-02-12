@@ -66,6 +66,7 @@ module Schienenzeppelin
 
     def after_install
       Schienenzeppelin::Helpers::Devise.apply
+      Schienenzeppelin::Helpers::Stimulus.apply
       # TODO: Re-enable with Rails 6.2
       # Schienenzeppelin::Helpers::Hotwire.apply
       Schienenzeppelin::Helpers::Tailwind.apply
