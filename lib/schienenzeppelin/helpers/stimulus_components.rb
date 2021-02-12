@@ -5,7 +5,7 @@ module Schienenzeppelin
     class StimulusComponents < HelperBase
       def apply
         run('yarn add tailwindcss-stimulus-components')
-        inject_into_file('app/javascript/packs/application.js', "require.context('../images', true)") do
+        inject_into_file('app/javascript/packs/application.js') do
           <<~JS
             import { Application } from "stimulus"
             import { definitionsFromContext } from "stimulus/webpack-helpers"

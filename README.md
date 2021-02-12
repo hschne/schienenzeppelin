@@ -1,9 +1,9 @@
 <h1 align="center">Schienenzeppelin</h1>
 
 <p align="center">
-<img src="https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg"></>
-<img src="https://badge.fury.io/rb/pundit.svg"></>
-<img src="https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability"></>
+<img src="https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg"/>
+<img src="https://badge.fury.io/rb/pundit.svg"/>
+<img src="https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability"/>
 </p>
 
 <p align="center">A <a href="https://rubyonrails.org/">Ruby on Rails</a> app generator with batteries included</p>
@@ -49,11 +49,13 @@ Schienenzeppelin comes pre-configured with [tailwindcss-rails](https://github.co
 
 #### Custom Scaffold
 
-Schienenzeppelin adds a bunch of scaffolds that you adapt to suit your own needs in `lib/scaffolds`. These scaffolds take advantage of Tailwind to match the rest of your application.
+Schienenzeppelin adds a bunch of scaffolds that you adapt to suit your own needs in `lib/scaffolds`. These scaffolds take advantage of Tailwind to match the look of the rest of your application. 
 
 #### Turbo
 
 [Hotwire](https://hotwire.dev/) is the new hotness. Starting with Schienenzeppelin means that Hotwire and its components such as [Stimulus](https://github.com/hotwired/stimulus) are already added to your application.
+
+Schienenzeppelin also takes advantage of [Tailwind-Stimulus-Components](https://github.com/excid3/tailwindcss-stimulus-components) to provide interactive componenets (Dropdowns, Alerts...) out of the box.
 
 ### Backend
 
@@ -145,8 +147,16 @@ Capistrano is already set up. Deploy to a server of your choice with minimal eff
 
 I wanted something that fits the way I like to write my Rails app. There are many application templates, but this one is mine.
 
-Also, I found that while templates like [Jumpstart](https://jumpstartrails.com/) offer tons of functionality, I'd prefer something that is more easily extendable and customizable than what's out there.
-
 #### What's with the German gibberish name?
 
 I'm so glad you asked. The [Schienenzeppelin](https://en.wikipedia.org/wiki/Schienenzeppelin) was an experimental railcar that was briefly in operation during the 1930s. It was pretty fast, and it ran on Rails. Get it? :zany_face:
+
+#### Credits
+
+This idea is nothing new, and there are tons of other projects I took inspiration from. 
+
+Special shout out to Chris Oliver, whose [Jumpstart Pro](https://jumpstartrails.com/) is crazy good. You should get it. 
+
+[Suspenders](https://github.com/thoughtbot/suspenders) was where I first came across the idea to try my hand at custom template generators.
+
+
