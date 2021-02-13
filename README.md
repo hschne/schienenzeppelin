@@ -32,12 +32,16 @@ Loads of things!
 
 Schienenzeppelin provides you with a ready-to-go Rails app that you can take to production in a matter of minutes. It comes pre-configured with several gems and utilities that - while kind of standard - are not included in the default Rails app generator. Some highlights include:
 
-- A mobile-friendly homepage using [TailwindCSS](https://tailwindcss.com/) and [High Voltage](https://github.com/thoughtbot/high_voltage).
-- Authentication comes standard. Starting your app with Schienenzeppelin means [Devise](https://github.com/heartcombo/devise) is already set up.
-- Dockerized everything. A dockerfile for your app, and a [docker-compose](https://docs.docker.com/compose/)-powered development environment.
-- Deploying your app is easy as pie. All the necessary [Capistrano](https://capistranorb.com/) configuration we did for you.
+- Fully responsive pages using [TailwindCSS](https://tailwindcss.com/) and [High Voltage](https://github.com/thoughtbot/high_voltage) out of the box. And custom scaffolds to boot! :sparkles:
+- Authentication comes standard. Starting your app with Schienenzeppelin means [Devise](https://github.com/heartcombo/devise) is already set up :police:
+- Dockerized everything. That includes a Dockerfile to get you started with containerizing your app, and a [docker-compose](https://docs.docker.com/compose/)-powered development environment :whale:
+- Deploying your app is easy as pie. All the basic [Capistrano](https://capistranorb.com/) configuration is done already, just put in your server location and you are off to the races :rocket:
 
 ### Frontend
+
+The nice thing about Schienenzeppelin is that it sets you up with basic pages that don't look like garbage - allowing you to focus on other things than design.
+
+Curious what that looks like? Check out the [[Gallery]]!
 
 #### Tailwind CSS
 
@@ -49,7 +53,7 @@ Schienenzeppelin comes pre-configured with [tailwindcss-rails](https://github.co
 
 #### Custom Scaffold
 
-Schienenzeppelin adds a bunch of scaffolds that you adapt to suit your own needs in `lib/scaffolds`. These scaffolds take advantage of Tailwind to match the look of the rest of your application. 
+Schienenzeppelin adds a bunch of scaffolds that you adapt to suit your own needs in `lib/scaffolds`. These scaffolds take advantage of Tailwind to match the look of the rest of your application.
 
 #### Turbo
 
@@ -58,6 +62,8 @@ Schienenzeppelin adds a bunch of scaffolds that you adapt to suit your own needs
 Schienenzeppelin also takes advantage of [Tailwind-Stimulus-Components](https://github.com/excid3/tailwindcss-stimulus-components) to provide interactive componenets (Dropdowns, Alerts...) out of the box.
 
 ### Backend
+
+Modern web apps need tons of functionality out of the box. Authentication, Authorization, APIs and much more. Schienenzeppelin comes with some basics to get you started quickly.
 
 #### Authentication
 
@@ -79,6 +85,12 @@ To serialize and deserialize to and from Json [OJ](https://github.com/ohler55/oj
 
 For rendering JSON views we use [JB](https://github.com/amatsuda/jb) instead of [JBuilder](https://github.com/rails/jbuilder), as it is both faster and simpler to use.
 
+#### Service Objects
+
+[Service Objects](https://www.toptal.com/ruby-on-rails/rails-service-objects-tutorial) are a simple, straight-forward way to encapsulate your business logic and keep your controllers and models nice and slim.
+
+Schienenzeppelin provides a basic service object base class you can inherit from to add your own service objects in `app/services`.
+
 ### Development
 
 #### Setup Script
@@ -93,6 +105,10 @@ Once you have set up everything your application can be started with a single co
 #### Better Rails Console
 
 Schienenzeppelin comes with a custom `.irbrc` that adds history and syntax completion. [Factory Bot](#factory_bot) methods will also be available in the console.
+
+#### Annotate
+
+[Annotate](https://github.com/ctran/annotate_models) adds comments to your models to show the current table schema. Automatically run during each migration.
 
 #### Database
 
@@ -153,10 +169,8 @@ I'm so glad you asked. The [Schienenzeppelin](https://en.wikipedia.org/wiki/Schi
 
 #### Credits
 
-This idea is nothing new, and there are tons of other projects I took inspiration from. 
+This idea is nothing new, and there are tons of other projects I took inspiration from.
 
-Special shout out to Chris Oliver, whose [Jumpstart Pro](https://jumpstartrails.com/) is crazy good. You should get it. 
+Special shout out to Chris Oliver, whose [Jumpstart Pro](https://jumpstartrails.com/) is crazy good. You should get it.
 
 [Suspenders](https://github.com/thoughtbot/suspenders) was where I first came across the idea to try my hand at custom template generators.
-
-
