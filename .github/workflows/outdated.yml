@@ -1,9 +1,6 @@
 name: Check Outdated
 
 on:
-  push:
-    branches:
-      - main
   schedule:
     - cron: '0 12 * * 1' 
       
@@ -17,8 +14,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.0
-          bundler-cache: true 
       - name: Check Outdated
         run: |
-          bundle config unset deployment
           bundle outdated rails
