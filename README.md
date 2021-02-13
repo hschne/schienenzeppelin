@@ -33,7 +33,7 @@ Loads of things!
 Schienenzeppelin provides you with a ready-to-go Rails app that you can take to production in a matter of minutes. It comes pre-configured with several gems and utilities that - while kind of standard - are not included in the default Rails app generator. Some highlights include:
 
 - Fully responsive pages using [TailwindCSS](https://tailwindcss.com/) and [High Voltage](https://github.com/thoughtbot/high_voltage) out of the box. And custom scaffolds to boot! :sparkles:
-- Authentication comes standard. Starting your app with Schienenzeppelin means [Devise](https://github.com/heartcombo/devise) is already set up :police:
+- Authentication & Authorization comes standard. Starting your app with Schienenzeppelin means [Devise](https://github.com/heartcombo/devise) is already set up :+1:
 - Dockerized everything. That includes a Dockerfile to get you started with containerizing your app, and a [docker-compose](https://docs.docker.com/compose/)-powered development environment :whale:
 - Deploying your app is easy as pie. All the basic [Capistrano](https://capistranorb.com/) configuration is done already, just put in your server location and you are off to the races :rocket:
 
