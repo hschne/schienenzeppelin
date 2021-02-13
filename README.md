@@ -41,7 +41,7 @@ Schienenzeppelin provides you with a ready-to-go Rails app that you can take to 
 
 The nice thing about Schienenzeppelin is that it sets you up with basic pages that don't look like garbage - allowing you to focus on other things than design.
 
-Curious what that looks like? Check out the [Gallery](GALLERY.md)!
+Curious what that looks like? Check out these [screenshots](GALLERY.md).
 
 #### Tailwind CSS
 
