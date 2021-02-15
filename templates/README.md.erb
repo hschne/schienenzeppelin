@@ -24,10 +24,20 @@ For more details refer to the [Documentation](https://github.com/hschne/schienen
 
 ## Deployment
 
-Deploy this application using Capistrano. Make sure you have a server set up and edit [config/production.rb](./config/production.rb). Then run:
+Deploy this application using Capistrano. Make sure you have a server set up and edit [deploy.rb](./config/deploy.rb) and [config/production.rb](./config/deploy/production.rb).
+
+``` ruby
+# deploy.rb
+set :repo_url, "git@github.com:user/your-project.git"
+
+# production.rb
+server "myserver.com", user: "deploy", roles: %w{app db web}
+```
+
+Then run:
 
 ```bash
 cap production deploy
 ```
 
-For more information you can follow [this guide](https://gorails.com/deploy/ubuntu/20.04).
+For more information on how to prepare a server for deployment you can follow [this guide](https://gorails.com/deploy/ubuntu/20.04).
