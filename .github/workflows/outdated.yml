@@ -16,4 +16,5 @@ jobs:
           ruby-version: 3.0.0
       - name: Check Outdated
         run: |
+          bundle install
           bundle outdated rails
