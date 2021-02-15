@@ -18,8 +18,8 @@ module Schienenzeppelin
       private
 
       def update_capfile
-        uncomment_lines('Capfile', %r{capistrano/rbenv})
-        uncomment_lines('Capfile', %r{capistrano/passenger})
+        uncomment_lines('Capfile', %r{require "capistrano/rbenv"})
+        uncomment_lines('Capfile', %r{require "capistrano/passenger"})
         inject_into_file 'Capfile' do
           <<~RUBY
             Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
