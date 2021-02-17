@@ -15,10 +15,11 @@
     - SSH agent eval
     - Empty GH repo
     - Reset local docker
-    - Droplet reset database
+    - Droplet reset database (but make sure DB exists!)
+    - Make sure spring boot is not on
   - First generate the tweets application
     sz tweeter
-    - Break during creation
+  - Break during creation
     cd tweeter
   - Start everything 
     foreman start
@@ -32,6 +33,7 @@
     - Custom scaffold
       - Create tweet, Edit tweet 
   - For deploy replace deploy.rb repo url
+    vim config/deploy.rb
     set :repo_url, "git@github.com:hschne/tweeter.git"
   - For deploy replace production.rb server IP
     server "207.154.218.89", user: "deploy", roles: %w{app db web}
@@ -42,7 +44,7 @@
     ```
     git remote add origin git@github.com:hschne/tweeter.git
     git branch -M main
-    git push -u origin main
+    git push -f -u origin main 
     ```
   - Cap production deploy
     cap production deploy
