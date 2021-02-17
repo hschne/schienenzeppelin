@@ -44,6 +44,7 @@ module Schienenzeppelin
       build(:dotenv)
       build(:docker)
       build(:docker_compose)
+      Schienenzeppelin::Helpers::Rubocop.apply
     end
 
     def create_test_files

@@ -9,27 +9,20 @@ module Schienenzeppelin
         directory('lib/capistrano', 'lib/capistrano')
 
         gsub_file('config/deploy.rb', /set :application, .+/, "set :application, '#{app_name}'")
-        gsub_file('config/deploy.rb', /set :deploy_to, .+"/, "set :deploy_to, home/deploy/\#{fetch :application}")
+        uncomment_lines('config/deploy.rb', /set :deploy_to/)
+        gsub_file('config/deploy.rb', /set :deploy_to, .+"/, 'set :deploy_to, "/home/deploy/#{fetch :application}"') # rubocop:disable Lint/InterpolationCheck
+
         uncomment_lines('config/deploy.rb', /set :keep_releases/)
-
-        update_capfile
-      end
-
-      private
-
-      def update_capfile
-        uncomment_lines('Capfile', %r{require "capistrano/rbenv"})
-        uncomment_lines('Capfile', %r{require "capistrano/passenger"})
-        inject_into_file 'Capfile' do
+        uncomment_lines('config/deploy.rb', /append :linked_dirs/)
+        uncomment_lines('config/deploy.rb', /ask :branch/)
+        gsub_file('config/deploy.rb', /ask :branch/, 'set :branch')
+        append_to_file('config/deploy.rb') do
           <<~RUBY
-            Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
-
-            after 'deploy:starting', 'sidekiq:quiet'
-            after 'deploy:updated', 'sidekiq:stop'
-            after 'deploy:published', 'sidekiq:start'
-            after 'deploy:failed', 'sidekiq:restart'
+            set :passenger_restart_with_sudo, true
           RUBY
         end
+
+        template('Capfile.erb', 'Capfile', force: true)
       end
     end
   end
