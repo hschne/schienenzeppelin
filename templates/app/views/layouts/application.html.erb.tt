@@ -7,14 +7,14 @@
   <%%= csp_meta_tag %>
 
   <%- if options[:skip_javascript] -%>
-    <%%= stylesheet_link_tag 'application' %>
+  <%%= stylesheet_link_tag 'application' %>
   <%- else -%>
     <%- unless options[:skip_turbolinks] -%>
-    <%%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%- else -%>
-    <%%= stylesheet_pack_tag 'application' %>
-    <%%= javascript_pack_tag 'application' %>
+  <%%= stylesheet_pack_tag 'application' %>
+  <%%= javascript_pack_tag 'application' %>
     <%- end -%>
   <%- end -%>
 </head>

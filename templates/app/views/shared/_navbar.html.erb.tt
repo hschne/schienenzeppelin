@@ -6,7 +6,7 @@
       <a
         class="flex items-center mr-2"
         href="<%%= root_path %>">
-        <%%= inline_svg_pack_tag('media/images/logo.svg', class: "rounded h-12 w-12 mx-2") %>
+        <%%= inline_svg_pack_tag('media/images/logo.svg', class: "rounded mx-2", size: "3rem * 3rem") %>
         <p class="font-bold text-lg"><%= app_name.capitalize %> </p>
       </a>
     </div>

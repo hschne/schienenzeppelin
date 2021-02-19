@@ -47,27 +47,3 @@ jobs:
           bin/rails db:setup
       - name: Run tests
         run: bin/rails test
-
-  rubocop:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-
-      - name: Install Rubocop
-        run:  |
-          gem install rubocop
-      - name: Get file changes
-        id: file_changes
-        uses: trilom/file-changes-action@v1.2.4
-        with:
-          output: ' '
-
-      - name: Run Rubocop
-        run: |
-          # File changes gives us space seperated file paths. We need to convert those to newlines, and then filter out
-          # any files that are not ruby, and finally feed that to Rubocop.
-          echo ${{ steps.file_changes.outputs.files_modified }} | tr " " "\n" | grep \.rb$ | xargs -r rubocop --force-exclusion

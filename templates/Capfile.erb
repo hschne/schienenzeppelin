@@ -22,5 +22,3 @@ after 'deploy:updated', 'sidekiq:stop'
 after 'deploy:published', 'sidekiq:start'
 after 'deploy:failed', 'sidekiq:restart'
 
-# Generate fallback 500
-after "deploy:published", 'generate:error_page'

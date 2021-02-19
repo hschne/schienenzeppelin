@@ -7,23 +7,42 @@ module Schienenzeppelin
         say 'Setting up custom error pages'
         directory('app/views/errors', 'app/views/errors')
         template('app/controllers/errors_controller.rb.erb', 'app/controllers/errors_controller.rb')
-        remove_file('public/500.html')
+        template('public/500.html.erb', 'public/500.html', force: true)
         remove_file('public/404.html')
         remove_file('public/422.html')
-        # TODO: With deployment make sure to add copy capistrano task
-        # https://www.marcelofossrj.com/recipe/2019/04/14/custom-errors.html
-        inject_into_file 'config/application.rb', before: "  end\n" do
+        inject_into_file 'config/application.rb', before: /^ {2}end\n/ do
           <<-RUBY
     # Enable custom error messages
     config.exceptions_app = routes
           RUBY
         end
-        inject_into_file 'config/routes.rb', before: "end\n" do
+        inject_into_file 'config/routes.rb', before: /^end/ do
           <<-RUBY
   get '/404', to: 'errors#not_found'
   get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
           RUBY
+        end
+
+        inject_into_file 'app/javascript/packs/application.js' do
+          <<~JS
+            // Patching turbolinks to allow custom errors
+            // See https://github.com/turbolinks/turbolinks/issues/179
+            window.Turbolinks.HttpRequest.prototype.requestLoaded = function() {
+              return this.endRequest(function() {
+                var code = this.xhr.status;
+                if (200 <= code && code < 300 ||
+                    code === 403 || code === 404 || code === 500) {
+                  this.delegate.requestCompletedWithResponse(
+                      this.xhr.responseText,
+                      this.xhr.getResponseHeader("Turbolinks-Location"));
+                } else {
+                  this.failed = true;
+                  this.delegate.requestFailedWithStatusCode(code, this.xhr.responseText);
+                }
+              }.bind(this));
+            };
+          JS
         end
       end
     end

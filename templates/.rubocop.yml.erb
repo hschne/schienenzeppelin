@@ -1,5 +1,10 @@
 AllCops:
   NewCops: enable
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - db/migrate/*
+    - node_modules/**/*
 
 Naming/AccessorMethodName:
   Enabled: false
@@ -10,13 +15,19 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
-  Exclude: ['**/*.rake']
+  Exclude:
+    - config/environments/*.rb
+    - '**/*.rake'
 
 Layout/LineLength:
   Max: 120
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
+
+Lint/EmptyBlock:
+  Exclude:
+    - spec/factories/*
 
 Style/BlockDelimiters:
   Exclude:

@@ -19,7 +19,7 @@ module Schienenzeppelin
         generate.factory_bot true
     end
         RUBY
-        inject_into_file 'config/application.rb', generators, before: "  end\n"
+        inject_into_file 'config/application.rb', generators, before: /^ {2}end\n/
       end
     end
   end
