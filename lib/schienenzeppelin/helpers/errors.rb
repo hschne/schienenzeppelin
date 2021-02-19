@@ -12,7 +12,7 @@ module Schienenzeppelin
         remove_file('public/422.html')
         inject_into_file 'config/application.rb', before: /^ {2}end\n/ do
           <<-RUBY
-    # Enable custom error messages
+    # Enable custom error pages
     config.exceptions_app = routes
           RUBY
         end
