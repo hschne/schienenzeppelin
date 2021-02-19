@@ -5,17 +5,32 @@ module Schienenzeppelin
     class Errors < HelperBase
       def apply
         say 'Setting up custom error pages'
-        directory('app/views/errors', 'app/views/errors')
-        template('app/controllers/errors_controller.rb.erb', 'app/controllers/errors_controller.rb')
+        add_errors
+        setup_public
+        add_routes
+        patch_turbolinks
+      end
+
+      private
+
+      def setup_public
         template('public/500.html.erb', 'public/500.html', force: true)
         remove_file('public/404.html')
         remove_file('public/422.html')
+      end
+
+      def add_errors
+        directory('app/views/errors', 'app/views/errors')
+        template('app/controllers/errors_controller.rb.erb', 'app/controllers/errors_controller.rb')
         inject_into_file 'config/application.rb', before: /^ {2}end\n/ do
           <<-RUBY
     # Enable custom error pages
     config.exceptions_app = routes
           RUBY
         end
+      end
+
+      def add_routes
         inject_into_file 'config/routes.rb', before: /^end/ do
           <<-RUBY
   get '/404', to: 'errors#not_found'
@@ -23,7 +38,9 @@ module Schienenzeppelin
   get '/500', to: 'errors#internal_error'
           RUBY
         end
+      end
 
+      def patch_turbolinks
         inject_into_file 'app/javascript/packs/application.js' do
           <<~JS
             // Patching turbolinks to allow custom errors

@@ -26,9 +26,3 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
-#RSpec/ExampleLength:
-#  Exclude:
-#    - spec/**/*
-#
-#RSpec/MultipleExpectations:
-#  Max: 2

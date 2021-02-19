@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = 'Create flexible and fast aggregation queries with graphql-ruby'
   spec.description = <<~HEREDOC
-    Schienenzepp
+    Schienenzeppelin
   HEREDOC
   spec.license = 'MIT'
   spec.homepage = 'https://github.com/hschne/schienenzeppelin'

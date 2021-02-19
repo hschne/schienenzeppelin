@@ -8,6 +8,14 @@ module Schienenzeppelin
         run('bundle exec cap install', capture: true)
         directory('lib/capistrano', 'lib/capistrano')
 
+        configure_deploy
+
+        template('Capfile.erb', 'Capfile', force: true)
+      end
+
+      private
+
+      def configure_deploy
         gsub_file('config/deploy.rb', /set :application, .+/, "set :application, '#{app_name}'")
         uncomment_lines('config/deploy.rb', /set :deploy_to/)
         gsub_file('config/deploy.rb', /set :deploy_to, .+"/, 'set :deploy_to, "/home/deploy/#{fetch :application}"') # rubocop:disable Lint/InterpolationCheck
@@ -21,8 +29,6 @@ module Schienenzeppelin
             set :passenger_restart_with_sudo, true
           RUBY
         end
-
-        template('Capfile.erb', 'Capfile', force: true)
       end
     end
   end
