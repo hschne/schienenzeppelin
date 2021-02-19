@@ -3,10 +3,10 @@
 <p align="center">
 <img src="https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg"/>
 <img src="https://badge.fury.io/rb/pundit.svg"/>
-<img src="https://api.codeclimate.com/v1/badges/692d4125ac8548fb145e/maintainability"/>
 </p>
 
-<p align="center">A <a href="https://rubyonrails.org/">Ruby on Rails</a> app generator with batteries included</p>
+The Ruby on Rails app generator to get you started quickly. Includes TailwindCSS,
+Devise, Capistrano and much more. Check out these [screenshots](GALLERY.md) and [What's in the Box](#whats-in-the-box) to find out more.
 
 ![zeppelin](./schienenzeppelin.jpg)
 
@@ -21,10 +21,8 @@ gem install schienenzeppelin
 Make sure you have [Ruby](https://www.ruby-lang.org/en/) and [ Yarn ](https://yarnpkg.com/) installed. Then run:
 
 ```
-sz new <app-name>
+sz <app-name>
 ```
-
-See [What's in the Box](#whats-in-the-box) for details on what's included in your new app.
 
 ## What's in the Box?
 

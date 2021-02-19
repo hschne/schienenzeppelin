@@ -10,9 +10,10 @@ Gem::Specification.new do |spec|
   spec.email = ['hans.schnedlitz@gmail.com']
   spec.date = Date.today.strftime('%Y-%m-%d')
 
-  spec.summary = 'Create flexible and fast aggregation queries with graphql-ruby'
+  spec.summary = 'The Rails app generator that gets you started quickly'
   spec.description = <<~HEREDOC
-    Schienenzeppelin
+    Schienenzeppelin is the Ruby on Rails app generator to get you started quickly. Includes TailwindCSS,
+    Devise, Capistrano and much more.
   HEREDOC
   spec.license = 'MIT'
   spec.homepage = 'https://github.com/hschne/schienenzeppelin'

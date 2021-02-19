@@ -77,7 +77,7 @@ server "207.154.218.89", user: "deploy", roles: %w{app db web}
 
 Before we can deploy, let's push our changes:
 ```
-git commit -a && git commit -m "Initial commit"
+git add . && git commit -m "Initial commit"
 git remote add origin git@github.com:hschne/tweeter.git
 git branch -M main
 git push -f -u origin main 
@@ -86,6 +86,12 @@ git push -f -u origin main
 And deploy
 ```
 cap production deploy
+```
+
+Get secret key
+
+```
+cat config/credentials/production.key | xclip -sel clipboard
 ```
 
 BREAK
