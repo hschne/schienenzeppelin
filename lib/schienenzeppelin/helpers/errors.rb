@@ -43,6 +43,7 @@ module Schienenzeppelin
       def patch_turbolinks
         inject_into_file 'app/javascript/packs/application.js' do
           <<~JS
+
             // Patching turbolinks to allow custom errors
             // See https://github.com/turbolinks/turbolinks/issues/179
             window.Turbolinks.HttpRequest.prototype.requestLoaded = function() {
