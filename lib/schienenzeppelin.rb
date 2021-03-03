@@ -9,7 +9,7 @@ require 'bundler'
 
 require_relative 'schienenzeppelin/version'
 require_relative 'schienenzeppelin/helper_base'
-Dir[File.join(__dir__, 'schienenzeppelin', 'helpers', '*.rb')].sort.each { |file| require file }
+Dir[File.join(__dir__, 'schienenzeppelin', 'helpers', '*.rb')].each { |file| require file }
 require_relative 'schienenzeppelin/app_generator'
 require_relative 'schienenzeppelin/app_builder'
 

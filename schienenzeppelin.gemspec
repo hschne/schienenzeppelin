@@ -8,7 +8,6 @@ Gem::Specification.new do |spec|
   spec.version = Schienenzeppelin::VERSION
   spec.authors = ['Hans-Jörg Schnedlitz']
   spec.email = ['hans.schnedlitz@gmail.com']
-  spec.date = Date.today.strftime('%Y-%m-%d')
 
   spec.summary = 'The Rails app generator that gets you started quickly'
   spec.description = <<~HEREDOC
