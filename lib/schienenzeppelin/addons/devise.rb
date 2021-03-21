@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Devise < HelperBase
+  module AddOns
+    class Devise < AddOn
       def apply
         generate('devise:install', capture: true)
         generate(:devise, 'User', 'name', 'admin:boolean', capture: true)

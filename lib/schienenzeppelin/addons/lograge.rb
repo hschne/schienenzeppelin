@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Scaffold < HelperBase
+  module AddOns
+    class Lograge < AddOn
       def apply
-        directory 'lib', 'lib'
+        template 'config/initializers/lograge.rb'
       end
     end
   end

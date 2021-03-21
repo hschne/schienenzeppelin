@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Errors < HelperBase
+  module AddOns
+    class Errors < AddOn
       def apply
         say 'Setting up custom error pages'
         add_errors

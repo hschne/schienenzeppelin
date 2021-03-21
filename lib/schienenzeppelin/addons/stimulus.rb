@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Hotwire < HelperBase
+  module AddOns
+    class Stimulus < AddOn
       def apply
-        rails_command('hotwire:install')
+        rails_command('stimulus:install')
       end
     end
   end

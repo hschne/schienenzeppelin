@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Rubocop < HelperBase
+  module AddOns
+    class Rubocop < AddOn
       def apply
         template '.rubocop.yml.erb', '.rubocop.yml'
       end

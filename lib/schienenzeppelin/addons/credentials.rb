@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Credentials < HelperBase
+  module AddOns
+    class Credentials < AddOn
       def apply
         key_path = Pathname.new('config/credentials/production.key')
         create_credential_files(key_path, 'config/credentials/production.yml.enc')

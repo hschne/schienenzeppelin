@@ -33,53 +33,46 @@ module Schienenzeppelin
 
     def create_config_files
       super
-      Schienenzeppelin::Helpers::Generators.apply
+      add(:generators)
     end
 
     def create_root_files
       super
 
-      build(:irbrc)
-      build(:foreman)
-      build(:dotenv)
-      build(:docker)
-      build(:docker_compose)
+      add(:irbrc)
+      add(:foreman)
+      add(:dotenv)
+      add(:docker)
       # TODO: Make optional
       # Schienenzeppelin::Helpers::Rubocop.apply
     end
 
     def create_test_files
-      build(:test) unless options[:skip_test]
-      build(:rspec) unless options[:skip_rspec]
-      build(:factory_bot) unless options[:skip_factory_bot]
-      build(:shoulda) unless options[:skip_shoulda]
+      return if options[:skip_test]
+
+      add(:rspec)
+      add(:factory_bot)
+      add(:shoulda)
     end
 
     def finish_template
       super
       # These require the presence of config/controllers, so they must be done after everything else
-      Schienenzeppelin::Helpers::Annotate.apply
-      build(:lograge)
-      build(:high_voltage)
-      build(:pundit)
-      Schienenzeppelin::Helpers::Services.apply unless options[:skip_services]
-      build(:sidekiq)
+      add(:annotate)
+      add(:lograge)
+      add(:high_voltage)
+      add(:pundit)
+      add(:services)
+      add(:sidekiq)
     end
 
     def after_install
-      Schienenzeppelin::Helpers::Devise.apply
-      Schienenzeppelin::Helpers::Stimulus.apply
-      # TODO: Re-enable with Rails 6.2
-      # Schienenzeppelin::Helpers::Hotwire.apply
-      Schienenzeppelin::Helpers::Tailwind.apply
-      Schienenzeppelin::Helpers::StimulusComponents.apply
-
-      Schienenzeppelin::Helpers::Home.apply
-      Schienenzeppelin::Helpers::Errors.apply
-      Schienenzeppelin::Helpers::Scaffold.apply
-
-      Schienenzeppelin::Helpers::ContinuousIntegration.apply
-      Schienenzeppelin::Helpers::Capistrano.apply
+      # These all require some gem to be installed
+      add(:devise)
+      add(:tailwind, :stimulus, :stimulus_components)
+      add(:home, :errors, :scaffold)
+      add(:continuous_integration)
+      add(:capistrano)
     end
 
     def self.banner
@@ -90,6 +83,18 @@ module Schienenzeppelin
 
     def get_builder_class
       Schienenzeppelin::AppBuilder
+    end
+
+    private
+
+    def add(*addons)
+      addons.each do |addon|
+        addon = addon.to_s.capitalize.camelize
+        "Schienenzeppelin::AddOns::#{addon}"
+          .constantize
+          .new(options)
+          .apply
+      end
     end
   end
 end

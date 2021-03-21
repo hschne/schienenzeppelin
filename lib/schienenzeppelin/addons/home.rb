@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Home < HelperBase
+  module AddOns
+    class Home < AddOn
       def apply
         say 'Setting up custom landing page'
         directory 'app/views/layouts', 'app/views/layouts', force: true

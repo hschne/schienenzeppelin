@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Sidekiq < HelperBase
+  module AddOns
+    class Sidekiq < AddOn
       def apply
         say 'Setting up sidekiq'
         empty_directory('app/workers')

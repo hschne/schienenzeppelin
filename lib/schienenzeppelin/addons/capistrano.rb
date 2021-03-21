@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Capistrano < HelperBase
+  module AddOns
+    class Capistrano < AddOn
       def apply
         say 'Installing and configuring Capistrano'
         run('bundle exec cap install', capture: true)

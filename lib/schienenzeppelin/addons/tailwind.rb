@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Tailwind < HelperBase
+  module AddOns
+    class Tailwind < AddOn
       def apply
         rails_command('tailwindcss:install')
         template('app/javascript/stylesheets/components.scss')

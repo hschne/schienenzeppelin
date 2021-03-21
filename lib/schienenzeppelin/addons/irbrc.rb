@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Services < HelperBase
+  module AddOns
+    class Lograge < AddOn
       def apply
-        directory 'app/services', 'app/services'
+        template '.irbrc.erb', '.irbrc'
       end
     end
   end

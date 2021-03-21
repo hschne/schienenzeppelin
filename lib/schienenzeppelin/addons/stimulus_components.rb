@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class StimulusComponents < HelperBase
+  module AddOns
+    class StimulusComponents < AddOn
       def apply
         run('yarn add tailwindcss-stimulus-components')
         inject_into_file('app/javascript/packs/application.js') do

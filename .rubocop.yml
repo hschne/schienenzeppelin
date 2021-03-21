@@ -17,7 +17,7 @@ Layout/LineLength:
   Max: 120
 
 Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
+  EnforcedStyle: indented_relative_to_receiver
 
 Style/BlockDelimiters:
   Exclude:

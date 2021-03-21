@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Schienenzeppelin
-  module Helpers
-    class Generators < HelperBase
+  module AddOns
+    class Generators < AddOn
       def apply
         directory('lib/generators', 'lib/generators')
         generators = <<-RUBY
