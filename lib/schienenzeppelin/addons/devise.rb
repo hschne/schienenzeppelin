@@ -8,6 +8,7 @@ module Schienenzeppelin
         generate(:devise, 'User', 'name', 'admin:boolean', capture: true)
         directory('app/views/devise', 'app/views/devise')
 
+        gem()
         inject_into_file 'config/environments/development.rb', before: /^end/ do
           <<-RUBY
 

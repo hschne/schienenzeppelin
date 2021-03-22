@@ -17,10 +17,6 @@ module Schienenzeppelin
       template 'README.md.erb', 'README.md'
     end
 
-    def test
-      super
-    end
-
     def ruby_version
       Schienenzeppelin::AddOns::RubyVersion.new(options).apply
     end

@@ -2,7 +2,7 @@
 
 module Schienenzeppelin
   module AddOns
-    class Home < AddOn
+    class Views < AddOn
       def apply
         say 'Setting up custom landing page'
         directory 'app/views/layouts', 'app/views/layouts', force: true

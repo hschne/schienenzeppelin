@@ -2,7 +2,7 @@
 
 module Schienenzeppelin
   module AddOns
-    class Home < AddOn
+    class Foreman < AddOn
       def apply
         template '.foreman.erb', '.foreman'
         template 'Procfile.erb', 'Procfile'

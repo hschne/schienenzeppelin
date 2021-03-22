@@ -26,6 +26,8 @@ ruby <%= "'#{RUBY_VERSION}'" -%>
 # gem 'image_processing', '~> 1.2'
 <% end -%>
 
+# Schienenzeppelin
+gem 'sz', '<%= Gem::Version.new(Schienenzeppelin::VERSION).approximate_recommendation %>'
 # Jb is a faster alternative to jbuilder"
 gem 'jb', '~> 0.8'
 # A fast JSON parser and Object marshaller

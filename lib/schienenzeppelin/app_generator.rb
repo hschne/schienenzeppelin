@@ -2,6 +2,7 @@
 
 module Schienenzeppelin
   class AppGenerator < Rails::Generators::AppGenerator
+    # Change defaults compared to standard Rails
     class_option :database,
                  type: :string,
                  aliases: '-d',
@@ -28,8 +29,23 @@ module Schienenzeppelin
 
     class_option :skip_rspec,
                  type: :boolean,
-                 aliases: '-T', default: false,
+                 default: false,
                  desc: 'Skip rspec'
+
+    def initialize(*args)
+      super
+
+      if options[:api]
+        self.options = options.merge(
+          skip_high_voltage: true,
+          skip_tailwind: true,
+          skip_stimulus: true,
+          skip_views: true,
+          skip_errors: true,
+          skip_generators: true
+        ).freeze
+      end
+    end
 
     def create_config_files
       super
@@ -48,7 +64,7 @@ module Schienenzeppelin
     end
 
     def create_test_files
-      return if options[:skip_test]
+      super
 
       add(:rspec)
       add(:factory_bot)
@@ -70,7 +86,7 @@ module Schienenzeppelin
       # These all require some gem to be installed
       add(:devise)
       add(:tailwind, :stimulus, :stimulus_components)
-      add(:home, :errors, :scaffold)
+      add(:views, :errors, :scaffold)
       add(:continuous_integration)
       add(:capistrano)
     end
