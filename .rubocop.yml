@@ -8,6 +8,7 @@ Naming/AccessorMethodName:
 Metrics/MethodLength:
   CountAsOne: ['array', 'heredoc']
   IgnoredMethods: ['describe', 'context']
+  Max: 20
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']

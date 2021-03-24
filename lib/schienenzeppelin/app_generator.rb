@@ -35,16 +35,16 @@ module Schienenzeppelin
     def initialize(*args)
       super
 
-      if options[:api]
-        self.options = options.merge(
-          skip_high_voltage: true,
-          skip_tailwind: true,
-          skip_stimulus: true,
-          skip_views: true,
-          skip_errors: true,
-          skip_generators: true
-        ).freeze
-      end
+      return unless options[:api]
+
+      self.options = options.merge(
+        skip_high_voltage: true,
+        skip_tailwind: true,
+        skip_stimulus: true,
+        skip_views: true,
+        skip_errors: true,
+        skip_generators: true
+      ).freeze
     end
 
     def create_config_files
