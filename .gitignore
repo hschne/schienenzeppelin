@@ -280,3 +280,5 @@ tags
 
 .bridgetown-cache/
 .bridgetown-webpack/
+
+.rspec_status

@@ -2,6 +2,8 @@
 
 require 'schienenzeppelin'
 
+require 'super_diff/rspec'
+
 Dir['./spec/support/**/*.rb'].each { |file| require file }
 
 RSpec.configure do |config|

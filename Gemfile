@@ -11,3 +11,4 @@ gem 'rspec', '~> 3.10'
 
 gem 'rubocop', '~> 1.9'
 gem 'rubocop-rspec', '~> 1.40'
+gem 'super_diff'
