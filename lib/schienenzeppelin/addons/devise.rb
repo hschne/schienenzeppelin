@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class Devise < AddOn
+      gem 'devise', '~> 4.7', 'Flexible authentication solution for Rails with Warden'
+
       def apply
         generate('devise:install', capture: true)
         generate(:devise, 'User', 'name', 'admin:boolean', capture: true)

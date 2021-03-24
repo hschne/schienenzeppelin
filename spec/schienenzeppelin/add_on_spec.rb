@@ -61,6 +61,10 @@ module Schienenzeppelin
             # Schienenzeppelin
 
             gem 'second'
+
+            group :development, :test do
+              gem 'third'
+            end
           HERE
         }
 
@@ -81,6 +85,41 @@ module Schienenzeppelin
               gem 'gemname', '~> 1.0'
 
               gem 'second'
+
+              group :development, :test do
+                gem 'third'
+              end
+            HERE
+          }
+
+          it 'should add gem' do
+            expect_any_instance_of(addon).to receive(:apply)
+
+            Dir.chdir(directory) { addon.apply }
+
+            expect(IO.read(gemfile)).to eq(expected_content)
+          end
+        end
+
+        context 'with group gem' do
+          let(:addon) do
+            Class.new(AddOn) do
+              gem('gemname', '~> 1.0', description: 'This is the description', group: %i[development test])
+            end
+          end
+
+          let(:expected_content) {
+            <<~HERE
+              gem 'first'
+              # Schienenzeppelin
+
+              gem 'second'
+
+              group :development, :test do
+                # This is the description
+                gem 'gemname', '~> 1.0'
+                gem 'third'
+              end
             HERE
           }
 

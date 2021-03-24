@@ -74,12 +74,15 @@ module Schienenzeppelin
     def finish_template
       super
       # These require the presence of config/controllers, so they must be done after everything else
+      add(:jb)
+      add(:oj)
       add(:annotate)
       add(:lograge)
       add(:high_voltage)
       add(:pundit)
       add(:services)
       add(:sidekiq)
+      add(:inline_svg)
     end
 
     def after_install

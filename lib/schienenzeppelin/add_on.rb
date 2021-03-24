@@ -12,9 +12,7 @@ module Schienenzeppelin
       @config = self.class.config || { dependencies: [], gems: [] }
     end
 
-    def apply
-      raise NotImplementedError
-    end
+    def apply; end
 
     def gems
       @config[:gems]
@@ -45,28 +43,44 @@ module Schienenzeppelin
     private
 
     def apply_gem(*args)
+      # TODO: Move this to generator
+      add_anchor
       options = args.extract_options!
       name, *versions = args
       parts = [quote(name)]
-      description = options.delete(:description)
       versions = versions.any? ? versions : options.delete(:version)
+
       Array(versions).each_with_object(parts) { |version, object| object << quote(version) }
+
+      description = options.delete(:description)
+      group = options.delete(:group)
+
       parts << quote(options) unless options.empty?
 
-      write_to_gemfile(description, parts)
+      write_to_gemfile(parts, description, group)
     end
 
-    def write_to_gemfile(description, parts)
+    def add_anchor
       in_root do
-        str = "gem #{parts.join(', ')}"
-        after = /^# Schienenzeppelin\n/
-        gemfile = 'Gemfile'
-        unless IO.read('Gemfile') =~ after
+        unless IO.read('Gemfile') =~ /^# Schienenzeppelin\n/
           say 'Adding SZ section to Gemfile', :yellow
-          append_file_with_newline(gemfile, '# Schienenzeppelin', verbose: false)
+          append_file_with_newline('Gemfile', '# Schienenzeppelin', verbose: false)
         end
-        inject_into_file(gemfile, "#{str}\n", after: after, verbose: false)
-        inject_into_file(gemfile, "# #{description}\n", after: after, verbose: false) if description
+      end
+    end
+
+    def write_to_gemfile(parts, description, group)
+      in_root do
+        @indentation = 1 if group
+        location = group.present? ? /^group #{group.map(&:inspect).join(', ')} do\n/ : /^# Schienenzeppelin\n/
+
+        gemfile = 'Gemfile'
+        gem = "#{indentation}gem #{parts.join(', ')}\n"
+        inject_into_file(gemfile, gem, after: location, verbose: false)
+        if description
+          description = "#{indentation}# #{description}\n"
+          inject_into_file(gemfile, description, after: location, verbose: false) if description
+        end
       end
     end
 

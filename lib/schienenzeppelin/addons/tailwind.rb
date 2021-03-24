@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class Tailwind < AddOn
+      gem 'tailwindcss-rails', description: 'Tailwind CSS for Rails'
+
       def apply
         rails_command('tailwindcss:install')
         template('app/javascript/stylesheets/components.scss')
