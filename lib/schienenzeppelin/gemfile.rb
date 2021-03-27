@@ -18,7 +18,7 @@ module Schienenzeppelin
 
       parts << quote(options) unless options.empty?
 
-      write_to_gemfile(parts, description, group)
+      write_to_gemfile(parts, description, group) unless parts.empty?
     end
 
     def add_anchor
@@ -36,7 +36,7 @@ module Schienenzeppelin
       in_root do
         @indentation = 1 if group
         group = wrap(group)
-        location = group.present? ? /^group #{group.map(&:inspect).join(', ')} do\n/ : /^# Schienenzeppelin\n/
+        location = group.empty? ? /^# Schienenzeppelin\n/ : /^group #{group.map(&:inspect).join(', ')} do\n/
 
         gemfile = 'Gemfile'
         gem = "#{indentation}gem #{parts.join(', ')}\n"

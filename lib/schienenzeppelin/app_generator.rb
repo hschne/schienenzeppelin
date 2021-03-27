@@ -47,11 +47,6 @@ module Schienenzeppelin
       ).freeze
     end
 
-    def create_config_files
-      super
-      add(:generators)
-    end
-
     def create_root_files
       super
 
@@ -75,21 +70,25 @@ module Schienenzeppelin
     def finish_template
       super
       # These require the presence of config/controllers, so they must be done after everything else
-      add(:jb)
-      add(:oj)
       add(:annotate)
-      add(:lograge)
+      add(:capistrano)
+      add(:continuous_integration)
+      add(:devise)
       add(:high_voltage)
+      add(:inline_svg)
+      add(:jb)
+      add(:generators)
+      add(:lograge)
+      add(:oj)
       add(:pundit)
       add(:services)
       add(:sidekiq)
-      add(:inline_svg)
+      add(:tailwind, :stimulus, :stimulus_components)
       add(:views, :errors, :scaffold)
-      add(:continuous_integration)
     end
 
     def after_install
-      @context[:callbacks].each(&:call)
+      context[:callbacks].each(&:call)
     end
 
     def self.banner
@@ -113,8 +112,7 @@ module Schienenzeppelin
         addon = addon.to_s.capitalize.camelize
         "Schienenzeppelin::AddOns::#{addon}"
           .constantize
-          .new(context, options)
-          .apply
+          .apply(context, options)
       end
     end
   end

@@ -51,8 +51,6 @@ module Schienenzeppelin
         end
 
         context 'with gem' do
-          let(:addon) { Class.new(AddOn) { gem('gemname', '~> 1.0', description: 'This is the description') } }
-
           let(:expected_content) {
             <<~HERE
               gem 'first'
@@ -73,10 +71,37 @@ module Schienenzeppelin
           }
 
           it 'should add gem' do
-            subject.add('gemname', '~> 1.0', description: 'This is the description')
+            described_class.add('gemname', '~> 1.0', description: 'This is the description')
 
             expect(IO.read(gemfile)).to eq(expected_content)
           end
+        end
+
+        context 'with require gem' do
+          let(:expected_content) {
+            <<~HERE
+              gem 'first'
+              # Schienenzeppelin
+              gem 'gemname', '~> 1.0', require: false
+
+              gem 'second'
+
+              group :development, :test do
+                gem 'third'
+              end
+
+              group :development do
+                gem 'development'
+              end
+            HERE
+          }
+
+          it 'should add gemfile with require' do
+            described_class.add('gemname', '~> 1.0', require: false)
+
+            expect(IO.read(gemfile)).to eq(expected_content)
+          end
+
         end
 
         context 'with single group gem' do
@@ -100,7 +125,7 @@ module Schienenzeppelin
           }
 
           it 'should add gem' do
-            subject.add('gemname', '~> 1.0', description: 'This is the description', group: :development)
+            described_class.add('gemname', '~> 1.0', description: 'This is the description', group: :development)
 
             expect(IO.read(gemfile)).to eq(expected_content)
           end
@@ -127,7 +152,7 @@ module Schienenzeppelin
           }
 
           it 'should add gem' do
-            subject.add('gemname', '~> 1.0', description: 'This is the description', group: %i[development test])
+            described_class.add('gemname', '~> 1.0', description: 'This is the description', group: %i[development test])
 
             expect(IO.read(gemfile)).to eq(expected_content)
           end

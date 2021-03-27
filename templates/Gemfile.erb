@@ -27,7 +27,7 @@ ruby <%= "'#{RUBY_VERSION}'" -%>
 <% end -%>
 
 # Schienenzeppelin
-gem 'sz', '<%= Gem::Version.new(Schienenzeppelin::VERSION).approximate_recommendation %>'
+gem 'schienenzeppelin', '<%= Gem::Version.new(Schienenzeppelin::VERSION).approximate_recommendation %>'
 
 <% if depend_on_bootsnap? -%>
 # Reduces boot times through caching; required in config/boot.rb

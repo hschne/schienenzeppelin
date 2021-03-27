@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class Devise < AddOn
-      gem 'devise', '~> 4.7', 'Flexible authentication solution for Rails with Warden'
+      gem 'devise', '~> 4.7', description: 'Flexible authentication solution for Rails with Warden'
 
       def apply
         @context[:callbacks] << proc do

@@ -3,21 +3,21 @@
 module Schienenzeppelin
   module AddOns
     class Capistrano < AddOn
-      with_options require: false, group: :development do
-        gem 'capistrano', '~> 3.15', description: 'Capistrano is used to deploy your application'
-        gem 'capistrano-rails', '~> 1.6'
-        gem 'capistrano-passenger', '~> 0.2.0'
-        gem 'capistrano-rbenv', '~> 2.2', '>= 2.1.4'
-      end
+      gem 'capistrano-rbenv', '~> 2.2', '>= 2.1.4', require: false, group: :development
+      gem 'capistrano-passenger', '~> 0.2.0', require: false, group: :development
+      gem 'capistrano', '~> 3.15', require: false, group: :development
+      gem 'capistrano-rails', '~> 1.6', require: false, group: :development, description: 'Deploy your application'
 
       def apply
-        say 'Installing and configuring Capistrano'
-        run('bundle exec cap install', capture: true)
-        directory('lib/capistrano', 'lib/capistrano')
+        @context[:callbacks] << proc do
+          say 'Installing and configuring Capistrano'
+          run('bundle exec cap install', capture: true)
+          directory('lib/capistrano', 'lib/capistrano')
 
-        configure_deploy
+          configure_deploy
 
-        template('Capfile.erb', 'Capfile', force: true)
+          template('Capfile.erb', 'Capfile', force: true)
+        end
       end
 
       private
