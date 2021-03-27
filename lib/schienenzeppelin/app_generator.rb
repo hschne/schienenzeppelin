@@ -103,7 +103,7 @@ module Schienenzeppelin
     end
 
     def context
-      @context ||= { callbacks: []}
+      @context ||= { callbacks: [] }
     end
 
     private

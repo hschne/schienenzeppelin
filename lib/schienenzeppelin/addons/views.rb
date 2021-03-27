@@ -3,7 +3,6 @@
 module Schienenzeppelin
   module AddOns
     class Views < AddOn
-
       depends_on :tailwind, :high_voltage
 
       def apply

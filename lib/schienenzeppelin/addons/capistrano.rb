@@ -3,7 +3,6 @@
 module Schienenzeppelin
   module AddOns
     class Capistrano < AddOn
-
       with_options require: false, group: :development do
         gem 'capistrano', '~> 3.15', description: 'Capistrano is used to deploy your application'
         gem 'capistrano-rails', '~> 1.6'
