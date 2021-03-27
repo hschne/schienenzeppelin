@@ -101,7 +101,6 @@ module Schienenzeppelin
 
             expect(IO.read(gemfile)).to eq(expected_content)
           end
-
         end
 
         context 'with single group gem' do
@@ -152,7 +151,8 @@ module Schienenzeppelin
           }
 
           it 'should add gem' do
-            described_class.add('gemname', '~> 1.0', description: 'This is the description', group: %i[development test])
+            described_class.add('gemname', '~> 1.0', description: 'This is the description',
+                                                     group: %i[development test])
 
             expect(IO.read(gemfile)).to eq(expected_content)
           end
