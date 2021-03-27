@@ -2,7 +2,7 @@
 
 module Schienenzeppelin
   module AddOns
-    class Lograge < AddOn
+    class Irbrc < AddOn
       def apply
         template '.irbrc.erb', '.irbrc'
       end

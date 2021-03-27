@@ -43,21 +43,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # A convenient way to manage environment variables
-  gem 'dotenv-rails'
-  gem 'rubocop', '~> 1.10', require: false
-<%- unless options[:skip_rspec] -%>
-  gem "rspec-rails"
-<% end -%>
-<%- unless options[:skip_factory_bot] -%>
-  gem "factory_bot_rails"
-<% end -%>
 end
 
 <% end -%>
 group :development do
-  # Add a comment summarizing the current schema to  your code
-  gem 'annotate', '~> 3.1'
+
 <%- unless options.api? || options.skip_dev_gems? -%>
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   <%- if options.dev? || options.edge? || options.main? -%>
@@ -76,17 +66,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 <% end -%>
-  # Capistrano is used to deploy your application
-  gem "capistrano", "~> 3.15", require: false
-  gem "capistrano-rails", "~> 1.6", require: false
-  gem 'capistrano-passenger', '~> 0.2.0', require: false
-  gem 'capistrano-rbenv', '~> 2.2', '>= 2.1.4', require: false
 end
 
 group :test do
-<%- unless options[:skip_shoulda] -%>
-  gem "shoulda-matchers"
-<% end -%>
 <%- if depends_on_system_test? -%>
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'

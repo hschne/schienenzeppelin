@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class Rspec < AddOn
-      gem "rspec-rails"
+      gem 'rspec-rails', group: %i[development test]
 
       def apply
         create_file('.rspec', '--require spec_helper')

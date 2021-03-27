@@ -3,6 +3,14 @@
 module Schienenzeppelin
   module AddOns
     class Capistrano < AddOn
+
+      with_options require: false, group: :development do
+        gem 'capistrano', '~> 3.15', description: 'Capistrano is used to deploy your application'
+        gem 'capistrano-rails', '~> 1.6'
+        gem 'capistrano-passenger', '~> 0.2.0'
+        gem 'capistrano-rbenv', '~> 2.2', '>= 2.1.4'
+      end
+
       def apply
         say 'Installing and configuring Capistrano'
         run('bundle exec cap install', capture: true)

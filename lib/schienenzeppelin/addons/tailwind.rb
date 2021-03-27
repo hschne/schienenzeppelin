@@ -6,13 +6,15 @@ module Schienenzeppelin
       gem 'tailwindcss-rails', description: 'Tailwind CSS for Rails'
 
       def apply
-        rails_command('tailwindcss:install')
-        template('app/javascript/stylesheets/components.scss')
-        insert_into_file 'app/javascript/stylesheets/application.scss' do
-          <<~CSS
+        @context[:callbacks] << proc do
+          rails_command('tailwindcss:install')
+          template('app/javascript/stylesheets/components.scss')
+          insert_into_file 'app/javascript/stylesheets/application.scss' do
+            <<~CSS
 
-            @import "components";
-          CSS
+              @import "components";
+            CSS
+          end
         end
       end
     end

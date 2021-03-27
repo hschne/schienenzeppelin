@@ -6,7 +6,9 @@ module Schienenzeppelin
       gem 'stimulus-rails', description: 'Add javascript sprinkles to your views'
 
       def apply
-        rails_command('stimulus:install')
+        @context[:callbacks] << proc do
+          rails_command('stimulus:install')
+        end
       end
     end
   end

@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class Errors < AddOn
+      depends_on :tailwind
+
       def apply
         say 'Setting up custom error pages'
         add_errors

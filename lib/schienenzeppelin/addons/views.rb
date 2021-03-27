@@ -3,6 +3,9 @@
 module Schienenzeppelin
   module AddOns
     class Views < AddOn
+
+      depends_on :tailwind, :high_voltage
+
       def apply
         say 'Setting up custom landing page'
         directory 'app/views/layouts', 'app/views/layouts', force: true

@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class FactoryBot < AddOn
-      gem "factory_bot_rails"
+      gem 'factory_bot_rails', group: %i[development test]
 
       def apply
         # TODO: Make this work for minitest

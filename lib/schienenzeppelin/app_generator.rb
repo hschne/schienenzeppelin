@@ -55,6 +55,7 @@ module Schienenzeppelin
     def create_root_files
       super
 
+      Gemfile.add_anchor
       add(:irbrc)
       add(:foreman)
       add(:dotenv)
@@ -83,15 +84,12 @@ module Schienenzeppelin
       add(:services)
       add(:sidekiq)
       add(:inline_svg)
+      add(:views, :errors, :scaffold)
+      add(:continuous_integration)
     end
 
     def after_install
-      # These all require some gem to be installed
-      add(:devise)
-      add(:tailwind, :stimulus, :stimulus_components)
-      add(:views, :errors, :scaffold)
-      add(:continuous_integration)
-      add(:capistrano)
+      @context[:callbacks].each(&:call)
     end
 
     def self.banner
@@ -104,6 +102,10 @@ module Schienenzeppelin
       Schienenzeppelin::AppBuilder
     end
 
+    def context
+      @context ||= { callbacks: []}
+    end
+
     private
 
     def add(*addons)
@@ -111,7 +113,7 @@ module Schienenzeppelin
         addon = addon.to_s.capitalize.camelize
         "Schienenzeppelin::AddOns::#{addon}"
           .constantize
-          .new(options)
+          .new(context, options)
           .apply
       end
     end
