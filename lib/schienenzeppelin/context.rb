@@ -2,7 +2,6 @@
 
 module Schienenzeppelin
   class Context
-
     attr_reader :options, :callbacks
 
     def initialize(options)

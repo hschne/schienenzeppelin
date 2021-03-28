@@ -16,7 +16,7 @@ RSpec.describe Schienenzeppelin do
     end
 
     skip 'should set up app' do
-      result, code, * = Schienenzeppelin::AppGenerator.start ['testapp'], destination_root: directory
+      result, _, * = Schienenzeppelin::AppGenerator.start ['testapp'], destination_root: directory
 
       expect(result).to be(nil)
     end

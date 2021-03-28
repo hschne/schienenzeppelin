@@ -2,7 +2,6 @@
 
 module Schienenzeppelin
   class Dependencies
-
     def initialize(addon, context)
       @addon = addon
       @context = context

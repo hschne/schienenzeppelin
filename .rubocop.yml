@@ -5,6 +5,9 @@ AllCops:
 Naming/AccessorMethodName:
   Enabled: false
 
+Metrics/ClassLength:
+  Max: 300
+
 Metrics/MethodLength:
   CountAsOne: ['array', 'heredoc']
   IgnoredMethods: ['describe', 'context']

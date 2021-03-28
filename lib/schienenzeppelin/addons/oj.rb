@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class Oj < AddOn
-      #Placeholder
+      # Placeholder
     end
   end
 end
