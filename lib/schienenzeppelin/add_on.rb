@@ -6,7 +6,7 @@ module Schienenzeppelin
     include Rails::Generators::Actions
     include Rails::Generators::AppName
 
-    attr_reader :dependencies
+    attr_reader :dependencies, :context
 
     def initialize(context)
       super
@@ -16,13 +16,19 @@ module Schienenzeppelin
 
     def apply; end
 
-    def uses?(identifier = nil)
-      identifier ||= self.class.identifier
-      options = @context.options
-      return false if options["skip_#{identifier}".to_sym]
+    no_commands do
+      def options
+        @context.options
+      end
 
-      clazz = identifier.nil? ? self.class : self.class.get(identifier)
-      Dependencies.new(clazz, @context).satisfied?
+      def uses?(identifier = nil)
+        identifier ||= self.class.identifier
+        options = @context.options
+        return false if options["skip_#{identifier}".to_sym]
+
+        clazz = identifier.nil? ? self.class : self.class.get(identifier)
+        Dependencies.new(clazz, @context).satisfied?
+      end
     end
 
     class << self

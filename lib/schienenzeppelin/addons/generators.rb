@@ -6,13 +6,13 @@ module Schienenzeppelin
       def apply
         directory('lib/generators/rails/navigation', 'lib/generators/rails/navigation') if uses?(:views)
 
-        template = 'lib/generators/rails/scaffold_controller_generator'
+        template = 'lib/generators/rails/scaffold_controller_generator.rb'
         template(template) if uses?(:scaffold)
 
-        # TODO: Adjust for rspec
+        # TODO: Customize for testing
         generators = <<-RUBY
     config.generators do |generate|
-        #{"require_relative '../lib/generators/rails/scaffold_controller_generator" if uses?(:scaffold)}
+        #{"require_relative '../lib/generators/rails/scaffold_controller_generator'" if uses?(:scaffold)}
         generate.helper false
         generate.javascripts false
         generate.request_specs false

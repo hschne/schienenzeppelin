@@ -18,18 +18,6 @@ module Schienenzeppelin
                  default: true,
                  desc: 'Skip jbuilder gem'
 
-    class_option :skip_test,
-                 type: :boolean,
-                 aliases: '-T', default: false,
-                 desc: 'Skip test files'
-
-    TEST_FRAMEWORKS = %w[minitest rspec].freeze
-    class_option :test_framework,
-                 type: :string,
-                 default: 'rspec',
-                 enum: TEST_FRAMEWORKS,
-                 desc: "Select your preferred test framework (options: #{TEST_FRAMEWORKS.join('/')})"
-
     class_option :skip_sidekiq,
                  type: :boolean, default: false,
                  desc: 'Skip sidekiq'
@@ -49,9 +37,14 @@ module Schienenzeppelin
                  default: false,
                  desc: 'Skip devise'
 
+    class_option :testing,
+                 type: :string,
+                 default: 'rspec'
+
     def initialize(*args)
       super
 
+      puts options
       if options[:api]
         self.options = options.merge(
           skip_errors: true,
@@ -60,6 +53,13 @@ module Schienenzeppelin
           skip_tailwind: true,
           skip_views: true
         ).freeze
+      end
+
+      unless options[:testing] == 'rspec'
+        self.options = options.merge(
+          skip_rspec: true,
+          skip_shoulda: true
+        )
       end
 
       return unless options[:skip_test]
@@ -85,9 +85,9 @@ module Schienenzeppelin
     def create_test_files
       return if options[:skip_test]
 
-      super if options[:test_framework] == 'minitest'
+      super if options[:testing] == 'minitest'
 
-      add(:rspec) if options[:test_framework] == 'rspec'
+      add(:rspec) if options[:testing] == 'rspec'
     end
 
     def finish_template
