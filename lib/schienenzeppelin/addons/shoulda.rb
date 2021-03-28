@@ -3,8 +3,6 @@
 module Schienenzeppelin
   module AddOns
     class Shoulda < AddOn
-      gem 'shoulda-matchers', group: :test
-
       def apply
         template 'spec/support/shoulda_matchers.rb'
       end

@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class Oj < AddOn
-      gem 'oj', '~> 3.11', description: 'A fast JSON parser and Object marshaller'
+      #Placeholder
     end
   end
 end

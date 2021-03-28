@@ -50,7 +50,6 @@ module Schienenzeppelin
     def create_root_files
       super
 
-      Gemfile.add_anchor
       add(:irbrc)
       add(:foreman)
       add(:dotenv)
@@ -71,24 +70,29 @@ module Schienenzeppelin
       super
       # These require the presence of config/controllers, so they must be done after everything else
       add(:annotate)
-      add(:capistrano)
       add(:continuous_integration)
-      add(:devise)
       add(:high_voltage)
-      add(:inline_svg)
-      add(:jb)
       add(:generators)
       add(:lograge)
-      add(:oj)
       add(:pundit)
       add(:services)
       add(:sidekiq)
-      add(:tailwind, :stimulus, :stimulus_components)
       add(:views, :errors, :scaffold)
     end
 
     def after_install
-      context[:callbacks].each(&:call)
+      add(:tailwind, :stimulus, :stimulus_components)
+      add(:devise)
+      add(:capistrano)
+    end
+
+    no_tasks do
+      def uses?(addon)
+        return false if options["skip_#{addon}".to_sym]
+
+        addon = AddOn.from_sym(addon)
+        Dependencies.new(addon, context).satisfied?
+      end
     end
 
     def self.banner
@@ -102,7 +106,7 @@ module Schienenzeppelin
     end
 
     def context
-      @context ||= { callbacks: [] }
+      @context ||= Context.new(options)
     end
 
     private
@@ -112,7 +116,7 @@ module Schienenzeppelin
         addon = addon.to_s.capitalize.camelize
         "Schienenzeppelin::AddOns::#{addon}"
           .constantize
-          .apply(context, options)
+          .apply(context)
       end
     end
   end

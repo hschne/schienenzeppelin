@@ -28,6 +28,48 @@ ruby <%= "'#{RUBY_VERSION}'" -%>
 
 # Schienenzeppelin
 gem 'schienenzeppelin', '<%= Gem::Version.new(Schienenzeppelin::VERSION).approximate_recommendation %>'
+<% if uses?(:jb) -%>
+# Jb is a faster alternative to jbuilder"
+gem 'jb', '~> 0.8'
+<% end -%>
+<% if uses?(:oj) -%>
+# A fast JSON parser and Object marshaller
+gem 'oj', '~> 3.11'
+<% end -%>
+<% if uses?(:lograge) -%>
+# An attempt to tame noisy Rails logs
+gem "lograge"
+<% end -%>
+<% if uses?(:pundit) -%>
+# Minimal and simple authorization through OO
+gem 'pundit', '~> 2.1'
+<% end -%>
+<% if uses?(:devise) -%>
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.7'
+<% end -%>
+
+<% if uses?(:high_voltage) -%>
+# A Rails engine for static pages
+gem 'high_voltage', '~> 3.1'
+<% end -%>
+<% if uses?(:stimulus) -%>
+# Add javascript sprinkles to your views
+gem 'stimulus-rails'
+<% end -%>
+<% if uses?(:tailwind) -%>
+# Tailwind CSS for Rails
+gem 'tailwindcss-rails'
+<% end -%>
+<% if uses?(:inline_svg) -%>
+# Embedded SVGs for easy styling
+gem 'inline_svg'
+<% end -%>
+
+<% if uses?(:sidekiq) -%>
+# Simple, efficient background processing alternative to ActiveJob
+gem 'sidekiq', '~> 6.1'
+<% end -%>
 
 <% if depend_on_bootsnap? -%>
 # Reduces boot times through caching; required in config/boot.rb
@@ -43,11 +85,27 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+<% if uses?(:dotenv) -%>
+  # A convenient way to manage environment variables
+  gem 'dotenv-rails'
+<% end -%>
+<% if uses?(:factory_bot) -%>
+  gem "factory_bot_rails"
+<% end -%>
+<% if uses?(:rspec) -%>
+  gem "rspec-rails"
+<% end -%>
+<% if uses?(:rubocop) -%>
+  gem 'rubocop', '~> 1.10', require: false
+<% end -%>
 end
 
 <% end -%>
 group :development do
-
+  <% if uses?(:annotate) -%>
+  # Add a comment summarizing the current schema to  your code
+  gem 'annotate', '~> 3.1'
+  <% end -%>
 <%- unless options.api? || options.skip_dev_gems? -%>
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   <%- if options.dev? || options.edge? || options.main? -%>
@@ -66,9 +124,20 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 <% end -%>
+
+<% if uses?(:capistrano) -%>
+  # Capistrano is used to deploy your application
+  gem "capistrano", "~> 3.15", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-passenger', '~> 0.2.0', require: false
+  gem 'capistrano-rbenv', '~> 2.2', '>= 2.1.4', require: false
+<% end -%>
 end
 
 group :test do
+<% if uses?(:shoulda) -%>
+  gem "shoulda-matchers"
+<% end -%>
 <%- if depends_on_system_test? -%>
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'

@@ -3,8 +3,6 @@
 module Schienenzeppelin
   module AddOns
     class Rspec < AddOn
-      gem 'rspec-rails', group: %i[development test]
-
       def apply
         create_file('.rspec', '--require spec_helper')
         template('spec/rails_helper.rb')

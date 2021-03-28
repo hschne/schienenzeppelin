@@ -8,7 +8,8 @@ require 'rails/generators/rails/app/app_generator'
 require 'bundler'
 
 require_relative 'schienenzeppelin/version'
-require_relative 'schienenzeppelin/gemfile'
+require_relative 'schienenzeppelin/context'
+require_relative 'schienenzeppelin/dependencies'
 require_relative 'schienenzeppelin/add_on'
 Dir[File.join(__dir__, 'schienenzeppelin', 'addons', '*.rb')].each { |file| require file }
 require_relative 'schienenzeppelin/app_generator'

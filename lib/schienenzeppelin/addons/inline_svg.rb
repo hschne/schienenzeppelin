@@ -3,8 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class InlineSvg < AddOn
-      # Embedded SVGs for easy styling
-      gem 'inline_svg'
+      # Placeholder
     end
   end
 end

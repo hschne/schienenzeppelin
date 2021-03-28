@@ -18,7 +18,7 @@ module Schienenzeppelin
     end
 
     def ruby_version
-      Schienenzeppelin::AddOns::RubyVersion.new(nil, options).apply
+      Schienenzeppelin::AddOns::RubyVersion.new(Context.new(options)).apply
     end
 
     def gemfile

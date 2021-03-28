@@ -15,7 +15,7 @@ module Schienenzeppelin
         it 'should skip apply' do
           expect_any_instance_of(clazz).not_to receive(:apply)
 
-          clazz.apply({ skip_class: true })
+          clazz.apply(Context.new({ skip_class: true }))
         end
       end
 
@@ -23,15 +23,17 @@ module Schienenzeppelin
         let(:clazz) { Class.new(AddOn) { depends_on(:another) } }
 
         it 'should apply' do
+          stub_const('Schienenzeppelin::AddOns::Another', Class.new(AddOn))
           expect_any_instance_of(clazz).to receive(:apply)
 
           clazz.apply
         end
 
         it 'skips apply' do
+          stub_const('Schienenzeppelin::AddOns::Another', Class.new(AddOn))
           expect_any_instance_of(clazz).not_to receive(:apply)
 
-          clazz.apply({ skip_another: true })
+          clazz.apply(Context.new({ skip_another: true }))
         end
       end
     end
