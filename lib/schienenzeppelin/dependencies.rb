@@ -20,11 +20,9 @@ module Schienenzeppelin
     private
 
     def dependencies_satisfied?(addon)
-      if @options["skip_#{addon}".to_sym]
-        return false
-      end
+      return false if @options["skip_#{addon}".to_sym]
 
-      dependencies = AddOn.from_sym(addon).dependencies
+      dependencies = AddOn.get(addon).dependencies
       dependencies.each do |dependency|
         return false unless dependencies_satisfied?(dependency)
       end

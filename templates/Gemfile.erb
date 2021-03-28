@@ -28,43 +28,43 @@ ruby <%= "'#{RUBY_VERSION}'" -%>
 
 # Schienenzeppelin
 gem 'schienenzeppelin', '<%= Gem::Version.new(Schienenzeppelin::VERSION).approximate_recommendation %>'
-<% if uses?(:jb) -%>
+<%- if uses?(:jb) -%>
 # Jb is a faster alternative to jbuilder"
 gem 'jb', '~> 0.8'
-<% end -%>
-<% if uses?(:oj) -%>
+<%- end -%>
+<%- if uses?(:oj) -%>
 # A fast JSON parser and Object marshaller
 gem 'oj', '~> 3.11'
-<% end -%>
-<% if uses?(:lograge) -%>
+<%- end -%>
+<%- if uses?(:lograge) -%>
 # An attempt to tame noisy Rails logs
 gem "lograge"
-<% end -%>
-<% if uses?(:pundit) -%>
+<%- end -%>
+<%- if uses?(:pundit) -%>
 # Minimal and simple authorization through OO
 gem 'pundit', '~> 2.1'
-<% end -%>
-<% if uses?(:devise) -%>
+<%- end -%>
+<%- if uses?(:devise) -%>
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.7'
-<% end -%>
+<%- end -%>
 
-<% if uses?(:high_voltage) -%>
+<%- if uses?(:high_voltage) -%>
 # A Rails engine for static pages
 gem 'high_voltage', '~> 3.1'
-<% end -%>
-<% if uses?(:stimulus) -%>
+<%- end -%>
+<%- if uses?(:stimulus) -%>
 # Add javascript sprinkles to your views
 gem 'stimulus-rails'
-<% end -%>
-<% if uses?(:tailwind) -%>
+<%- end -%>
+<%- if uses?(:tailwind) -%>
 # Tailwind CSS for Rails
 gem 'tailwindcss-rails'
-<% end -%>
-<% if uses?(:inline_svg) -%>
+<%- end -%>
+<%- if uses?(:inline_svg) -%>
 # Embedded SVGs for easy styling
 gem 'inline_svg'
-<% end -%>
+<%- end -%>
 
 <% if uses?(:sidekiq) -%>
 # Simple, efficient background processing alternative to ActiveJob
@@ -89,15 +89,16 @@ group :development, :test do
   # A convenient way to manage environment variables
   gem 'dotenv-rails'
 <% end -%>
+
 <% if uses?(:factory_bot) -%>
   gem "factory_bot_rails"
 <% end -%>
-<% if uses?(:rspec) -%>
+<%- if uses?(:rspec) -%>
   gem "rspec-rails"
-<% end -%>
-<% if uses?(:rubocop) -%>
+<%- end -%>
+<%- if uses?(:rubocop) -%>
   gem 'rubocop', '~> 1.10', require: false
-<% end -%>
+<%- end -%>
 end
 
 <% end -%>

@@ -5,6 +5,10 @@ module Schienenzeppelin
     describe 'apply' do
       let(:clazz) { Class.new(AddOn) }
 
+      before(:each) do
+        stub_const('Schienenzeppelin::AddOns::Class', clazz)
+      end
+
       it 'should apply' do
         expect_any_instance_of(clazz).to receive(:apply)
 

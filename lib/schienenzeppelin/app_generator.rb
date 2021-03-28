@@ -20,8 +20,15 @@ module Schienenzeppelin
 
     class_option :skip_test,
                  type: :boolean,
-                 aliases: '-T', default: true,
+                 aliases: '-T', default: false,
                  desc: 'Skip test files'
+
+    TEST_FRAMEWORKS = %w[minitest rspec].freeze
+    class_option :test_framework,
+                 type: :string,
+                 default: 'rspec',
+                 enum: TEST_FRAMEWORKS,
+                 desc: "Select your preferred test framework (options: #{TEST_FRAMEWORKS.join('/')})"
 
     class_option :skip_sidekiq,
                  type: :boolean, default: false,
@@ -32,19 +39,36 @@ module Schienenzeppelin
                  default: false,
                  desc: 'Skip rspec'
 
+    class_option :skip_factory_bot,
+                 type: :boolean,
+                 default: false,
+                 desc: 'Skip factory bot'
+
+    class_option :skip_devise,
+                 type: :boolean,
+                 default: false,
+                 desc: 'Skip devise'
+
     def initialize(*args)
       super
 
-      return unless options[:api]
+      if options[:api]
+        self.options = options.merge(
+          skip_errors: true,
+          skip_high_voltage: true,
+          skip_stimulus: true,
+          skip_tailwind: true,
+          skip_views: true
+        ).freeze
+      end
+
+      return unless options[:skip_test]
 
       self.options = options.merge(
-        skip_high_voltage: true,
-        skip_tailwind: true,
-        skip_stimulus: true,
-        skip_views: true,
-        skip_errors: true,
-        skip_generators: true
-      ).freeze
+        skip_rspec: true,
+        skip_shoulda: true,
+        skip_factory_bot: true
+      )
     end
 
     def create_root_files
@@ -59,11 +83,11 @@ module Schienenzeppelin
     end
 
     def create_test_files
-      super
+      return if options[:skip_test]
 
-      add(:rspec)
-      add(:factory_bot)
-      add(:shoulda)
+      super if options[:test_framework] == 'minitest'
+
+      add(:rspec) if options[:test_framework] == 'rspec'
     end
 
     def finish_template
@@ -78,6 +102,9 @@ module Schienenzeppelin
       add(:services)
       add(:sidekiq)
       add(:views, :errors, :scaffold)
+
+      add(:factory_bot)
+      add(:shoulda)
     end
 
     def after_install
@@ -90,7 +117,7 @@ module Schienenzeppelin
       def uses?(addon)
         return false if options["skip_#{addon}".to_sym]
 
-        addon = AddOn.from_sym(addon)
+        addon = AddOn.get(addon)
         Dependencies.new(addon, context).satisfied?
       end
     end

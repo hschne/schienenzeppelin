@@ -16,28 +16,34 @@ module Schienenzeppelin
 
     def apply; end
 
+    def uses?(identifier = nil)
+      identifier ||= self.class.identifier
+      options = @context.options
+      return false if options["skip_#{identifier}".to_sym]
+
+      clazz = identifier.nil? ? self.class : self.class.get(identifier)
+      Dependencies.new(clazz, @context).satisfied?
+    end
+
     class << self
       def default_source_root
         File.expand_path(File.join('..', '..', 'templates'), __dir__)
       end
 
       def apply(context = Context.new({}))
-        options = context.options
+        instance = new(context)
+        return unless instance.uses?
 
-        return if options["skip_#{identifier}".to_sym]
-
-        return unless Dependencies.new(self, context).satisfied?
-
-        new(context).apply
+        instance.apply
       end
 
-      def from_sym(addon)
+      def get(addon)
         addon = addon.to_s.capitalize.camelize
         "Schienenzeppelin::AddOns::#{addon}".constantize
       end
 
       def identifier
-        self.class.name.demodulize.underscore
+        name.demodulize.underscore.to_sym
       end
 
       def dependencies

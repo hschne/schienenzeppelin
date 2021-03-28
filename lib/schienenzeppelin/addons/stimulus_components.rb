@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class StimulusComponents < AddOn
+      depends_on :stimulus
+
       def apply
         run('yarn add tailwindcss-stimulus-components')
         inject_into_file('app/javascript/packs/application.js') do
