@@ -55,13 +55,6 @@ module Schienenzeppelin
         ).freeze
       end
 
-      unless options[:testing] == 'rspec'
-        self.options = options.merge(
-          skip_rspec: true,
-          skip_shoulda: true
-        )
-      end
-
       return unless options[:skip_test]
 
       self.options = options.merge(
