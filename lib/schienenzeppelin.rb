@@ -12,6 +12,7 @@ require_relative 'schienenzeppelin/context'
 require_relative 'schienenzeppelin/dependencies'
 require_relative 'schienenzeppelin/add_on'
 Dir[File.join(__dir__, 'schienenzeppelin', 'addons', '*.rb')].each { |file| require file }
+require_relative 'schienenzeppelin/generator_utils'
 require_relative 'schienenzeppelin/app_generator'
 require_relative 'schienenzeppelin/app_builder'
 

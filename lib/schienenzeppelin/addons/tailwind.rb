@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class Tailwind < AddOn
+      depends_on :javascript
+
       def apply
         rails_command('tailwindcss:install')
         template('app/javascript/stylesheets/components.scss')

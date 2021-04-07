@@ -2,49 +2,16 @@
 
 module Schienenzeppelin
   class AppGenerator < Rails::Generators::AppGenerator
-    # Change defaults compared to standard Rails
-    class_option :database,
-                 type: :string,
-                 aliases: '-d',
-                 default: 'postgresql',
-                 desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
+    include GeneratorUtils
+    overwrite_default_options!
 
-    class_option :skip_active_job,
-                 type: :boolean, default: true,
-                 desc: 'Skip Active Job'
+    generate_addon_options!
 
-    class_option :skip_jbuilder,
-                 type: :boolean,
-                 default: true,
-                 desc: 'Skip jbuilder gem'
-
-    class_option :skip_sidekiq,
-                 type: :boolean, default: false,
-                 desc: 'Skip sidekiq'
-
-    class_option :skip_rspec,
-                 type: :boolean,
-                 default: false,
-                 desc: 'Skip rspec'
-
-    class_option :skip_factory_bot,
-                 type: :boolean,
-                 default: false,
-                 desc: 'Skip factory bot'
-
-    class_option :skip_devise,
-                 type: :boolean,
-                 default: false,
-                 desc: 'Skip devise'
-
-    class_option :testing,
-                 type: :string,
-                 default: 'rspec'
+    generate_addon_skips!
 
     def initialize(*args)
       super
 
-      puts options
       if options[:api]
         self.options = options.merge(
           skip_errors: true,
@@ -54,14 +21,6 @@ module Schienenzeppelin
           skip_views: true
         ).freeze
       end
-
-      return unless options[:skip_test]
-
-      self.options = options.merge(
-        skip_rspec: true,
-        skip_shoulda: true,
-        skip_factory_bot: true
-      )
     end
 
     def create_root_files
@@ -78,9 +37,9 @@ module Schienenzeppelin
     def create_test_files
       return if options[:skip_test]
 
-      super if options[:testing] == 'minitest'
+      super if options[:testing_framework] == 'minitest'
 
-      add(:rspec) if options[:testing] == 'rspec'
+      add(:rspec) if options[:testing_framework] == 'rspec'
     end
 
     def finish_template
@@ -123,21 +82,6 @@ module Schienenzeppelin
 
     def get_builder_class
       Schienenzeppelin::AppBuilder
-    end
-
-    def context
-      @context ||= Context.new(options)
-    end
-
-    private
-
-    def add(*addons)
-      addons.each do |addon|
-        addon = addon.to_s.capitalize.camelize
-        "Schienenzeppelin::AddOns::#{addon}"
-          .constantize
-          .apply(context)
-      end
     end
   end
 end

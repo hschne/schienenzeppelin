@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class InlineSvg < AddOn
-      # Placeholder
+      depends_on :views
     end
   end
 end

@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class FactoryBot < AddOn
+      depends_on :active_record, :test
+
       def apply
         # TODO: Make this work for minitest
         empty_directory 'spec/factories'

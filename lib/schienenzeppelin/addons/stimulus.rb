@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class Stimulus < AddOn
+      depends_on :javascript
+
       def apply
         rails_command('stimulus:install')
       end

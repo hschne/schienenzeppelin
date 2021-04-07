@@ -21,6 +21,8 @@ module Schienenzeppelin
     def dependencies_satisfied?(addon)
       return false if @options["skip_#{addon}".to_sym]
 
+      return true if @context.default_addons.include?(addon)
+
       dependencies = AddOn.get(addon).dependencies
       dependencies.each do |dependency|
         return false unless dependencies_satisfied?(dependency)

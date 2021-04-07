@@ -1,2 +1,4 @@
 web: rails server
+<% if uses?(:sidekiq) -%>
 worker: sidekiq
+<% end -%>
