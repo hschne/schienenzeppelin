@@ -18,14 +18,15 @@ module Schienenzeppelin
 
     private
 
-    def dependencies_satisfied?(addon)
+    def dependencies_satisfied?(addon, visited = [])
       return false if @options["skip_#{addon}".to_sym]
 
       return true if @context.default_addons.include?(addon)
 
-      dependencies = AddOn.get(addon).dependencies
+      visited << addon
+      dependencies = AddOn.get(addon).dependencies - visited
       dependencies.each do |dependency|
-        return false unless dependencies_satisfied?(dependency)
+        return false unless dependencies_satisfied?(dependency, visited)
       end
     end
   end

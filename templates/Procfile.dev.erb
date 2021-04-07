@@ -1,6 +1,10 @@
+<% if uses?(:docker_compose) -%>
 docker: docker-compose up --scale <%= app_name %>=0
-<%- unless options[:skip_sidekiq] -%>
+<% end -%>
+<% if uses?(:sidekiq) -%>
 sidekiq: bundle exec sidekiq
 <% end -%>
+<% if uses?(:webpack_install) -%>
 webpack: bundle exec bin/webpack-dev-server
+<% end -%>
 web: bundle exec rails server -p 3000

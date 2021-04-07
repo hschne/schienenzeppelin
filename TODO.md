@@ -2,27 +2,38 @@
 
 ## Phase 2
 
-- Schienenzeppelin Repo CI (notify gem releases, tests)
-- Loads of testing
-- Dependencies:
-  - inline svg
-  - Remove empty lines
-  - Make deploy skippable (readme!)
-  - Skip activerecord/skip devise?
-  - Allow activejob, skip sidekiq in procfile
-  - skip lograge
-  - skip oj, jb
-  - skip rspec
-  - skip rubocop
-  - skip annotate
+- Proper Icon
 - Hide generators and scaffolds in sz gem, don't copy as templates. See JB, use railtie
-
+- More dependency stuff: 
+  - Adapt test command in CI
+  - Adapt capfile for skips (sidekiq)
+  - Adapt docker-compose for skips (database, webpack...)
+  - Adapt dockerfile & entrypoint for skips (database, webpack...)
+  - Adapt dotenv for skips (database)
+  - Adapt setup for skips (database, sidekiq...)
+    
+- Testplan 
+  - Skip ActiveJob
+  - Skip Sidekiq
+  - Skip Devise
+  - Skip Views
+  - Skip Tailwind
+  - Skip Javascript
+  - Skip Webpacker
+  - Skip High Voltage
+  - Skip Rspec
+  - Skip Tests
+  
 ## Phase 3
 
-- Make everything skippable, manage dependencies between items
+- Homepage & Newsletter & Docs
+- Additional Gems:
+  - Pagy
 - Take advantage of saved config (as rails new does)
+  
+## Phase 4
+
 - Licensing?
-- Homepage & Newsletter
 - Goodies for Business:
   - Admin pages
   - Social Logins
@@ -38,6 +49,4 @@
   - Differernt DB
   - Different BG Jobs
   - Different Deployment
-- Additional Gems:
-  - Pagy
 - Ansible repo setup if deploy is Capistrano

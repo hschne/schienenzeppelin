@@ -10,12 +10,12 @@ services:
       POSTGRES_PASSWORD: <%= app_name %>
       POSTGRES_USER: <%= app_name %>
 
-    <% if uses?(:sidekiq) -%>
+  <%-if uses?(:sidekiq) -%>
   <%= app_name %>-redis:
     image: redis
     ports:
       - 6379:6379
-    <% end -%>
+  <%- end -%>
 
 volumes:
   <%= app_name %>-data:

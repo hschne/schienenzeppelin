@@ -3,7 +3,7 @@
 module Schienenzeppelin
   module AddOns
     class Scaffold < AddOn
-      depends_on :views
+      depends_on :tailwind
 
       def apply
         directory 'lib/templates/erb/scaffold', 'lib/templates/erb/scaffold'

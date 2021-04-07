@@ -12,15 +12,15 @@ module Schienenzeppelin
     def initialize(*args)
       super
 
-      if options[:api]
-        self.options = options.merge(
-          skip_errors: true,
-          skip_high_voltage: true,
-          skip_stimulus: true,
-          skip_tailwind: true,
-          skip_views: true
-        ).freeze
-      end
+      return unless options[:api]
+
+      self.options = options.merge(
+        skip_errors: true,
+        skip_high_voltage: true,
+        skip_stimulus: true,
+        skip_tailwind: true,
+        skip_views: true
+      ).freeze
     end
 
     def create_root_files
@@ -31,7 +31,7 @@ module Schienenzeppelin
       add(:dotenv)
       add(:docker)
       # TODO: Make optional
-      # Schienenzeppelin::Helpers::Rubocop.apply
+      add(:rubocop)
     end
 
     def create_test_files

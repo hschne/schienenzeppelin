@@ -22,7 +22,7 @@ RUN bundle install --without development
 RUN yarn install
 
 FROM cache
-COPY . /bookstore
+COPY . /<%= app_name %>
 
 ARG DATABASE_HOST=db
 ARG RAILS_ENV=production

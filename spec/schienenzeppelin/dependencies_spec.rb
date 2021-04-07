@@ -2,11 +2,11 @@
 
 module Schienenzeppelin
   RSpec.describe Dependencies do
-    let(:clazz) { Class.new(AddOn) }
+    let(:dummy) { Class.new(AddOn) }
     let(:dependency) { Class.new(AddOn) }
 
     before(:each) do
-      stub_const('Schienenzeppelin::AddOns::Dummy', clazz)
+      stub_const('Schienenzeppelin::AddOns::Dummy', dummy)
       stub_const('Schienenzeppelin::AddOns::Dependency', dependency)
     end
 
@@ -28,17 +28,28 @@ module Schienenzeppelin
         end
       end
 
+      context 'with circular dependency' do
+        let(:dummy) { Class.new(AddOn) { depends_on :dependency } }
+        let(:dependency) { Class.new(AddOn) { depends_on :dummy } }
+
+        it 'should return true if none skipped' do
+          dependencies = Dependencies.new(dummy, Context.new({ skip_dependency: false }))
+
+          expect(dependencies.satisfied?).to be true
+        end
+      end
+
       context 'with default dependency' do
-        let(:clazz) { Class.new(AddOn) { depends_on :active_record } }
+        let(:dummy) { Class.new(AddOn) { depends_on :active_record } }
 
         it 'should return false if dependency skipped' do
-          dependencies = Dependencies.new(clazz, Context.new({ skip_active_record: true }))
+          dependencies = Dependencies.new(dummy, Context.new({ skip_active_record: true }))
 
           expect(dependencies.satisfied?).to be false
         end
 
         it 'should return true if dependency not skipped' do
-          dependencies = Dependencies.new(clazz, Context.new({ skip_active_record: false }))
+          dependencies = Dependencies.new(dummy, Context.new({ skip_active_record: false }))
 
           expect(dependencies.satisfied?).to be true
         end

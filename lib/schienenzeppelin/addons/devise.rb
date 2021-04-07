@@ -6,6 +6,7 @@ module Schienenzeppelin
       def apply
         generate('devise:install', capture: true)
         generate(:devise, 'User', 'name', 'admin:boolean', capture: true)
+
         directory('app/views/devise', 'app/views/devise') if uses?(:views)
 
         inject_into_file 'config/environments/development.rb', before: /^end/ do
