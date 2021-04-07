@@ -26,6 +26,8 @@ module Schienenzeppelin
         options = @context.options
         return false if options["skip_#{identifier}".to_sym]
 
+        return true if @context.default_addons.include?(identifier)
+
         clazz = identifier.nil? ? self.class : self.class.get(identifier)
         Dependencies.new(clazz, @context).satisfied?
       end

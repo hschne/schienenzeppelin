@@ -2,6 +2,22 @@
 
 module Schienenzeppelin
   RSpec.describe AddOn do
+    let(:clazz) { Class.new(AddOn) }
+
+    describe 'uses' do
+      it 'should return false if skipped default' do
+        addon = AddOn.new(Context.new({ skip_active_record: true }))
+
+        expect(addon.uses?(:active_record)).to be false
+      end
+
+      it 'should return true not skipped default' do
+        addon = AddOn.new(Context.new({ skip_active_record: false }))
+
+        expect(addon.uses?(:active_record)).to be true
+      end
+    end
+
     describe 'apply' do
       let(:clazz) { Class.new(AddOn) }
 
