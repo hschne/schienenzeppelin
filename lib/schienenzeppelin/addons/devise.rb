@@ -3,6 +3,8 @@
 module Schienenzeppelin
   module AddOns
     class Devise < AddOn
+      depends_on :active_record
+
       def apply
         generate('devise:install', capture: true)
         generate(:devise, 'User', 'name', 'admin:boolean', capture: true)

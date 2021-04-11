@@ -9,7 +9,6 @@ module Schienenzeppelin
         template = 'lib/generators/rails/scaffold_controller_generator.rb'
         template(template) if uses?(:scaffold)
 
-        # TODO: Customize for testing
         generators = <<-RUBY
     config.generators do |generate|
         #{"require_relative '../lib/generators/rails/scaffold_controller_generator'" if uses?(:scaffold)}
@@ -18,7 +17,7 @@ module Schienenzeppelin
         generate.request_specs false
         generate.routing_specs false
         generate.stylesheets false
-        generate.test_framework :rspec
+        #{'generate.test_framework :rspec' if uses?(:rspec)}
         generate.view_specs false
         #{'generate.jb true' if uses?(:jb)}
         #{'generate.factory_bot true' if uses?(:factory_bot)}

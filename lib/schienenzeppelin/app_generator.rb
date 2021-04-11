@@ -30,7 +30,7 @@ module Schienenzeppelin
       add(:foreman)
       add(:dotenv)
       add(:docker)
-      # TODO: Make optional
+      add(:docker_compose)
       add(:rubocop)
     end
 

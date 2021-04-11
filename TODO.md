@@ -1,37 +1,29 @@
 # TODO
 
-## Phase 2
+## Next up
 
-- Proper Icon
-- Hide generators and scaffolds in sz gem, don't copy as templates. See JB, use railtie
-- More dependency stuff: 
+- Dependency management for options e.g.
+  - Testing framework
+  - Deployment framework
+  - Background processing
+- Take advantage of saved config (as rails new does)
+- Additional Gems:
+  - Pagy
+
+- More dependency stuff:
   - Adapt test command in CI
   - Adapt capfile for skips (sidekiq)
   - Adapt docker-compose for skips (database, webpack...)
   - Adapt dockerfile & entrypoint for skips (database, webpack...)
   - Adapt dotenv for skips (database)
   - Adapt setup for skips (database, sidekiq...)
-    
-- Testplan 
-  - Skip ActiveJob
-  - Skip Sidekiq
-  - Skip Devise
-  - Skip Views
-  - Skip Tailwind
-  - Skip Javascript
-  - Skip Webpacker
-  - Skip High Voltage
-  - Skip Rspec
-  - Skip Tests
   
-## Phase 3
+## Future
 
+- Proper Icon
 - Homepage & Newsletter & Docs
-- Additional Gems:
-  - Pagy
-- Take advantage of saved config (as rails new does)
   
-## Phase 4
+## Far Future
 
 - Licensing?
 - Goodies for Business:
