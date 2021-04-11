@@ -8,9 +8,9 @@
       <a
         class="flex items-center mr-2"
         <%- if uses?(:high_voltage) -%>
-          href="<%%= root_path %>"
+        href="<%%= root_path %>"
         <%- else -%>
-          href="/"
+        href="/"
         <%- end -%>
       >
         <%- if uses?(:inline_svg) -%>
