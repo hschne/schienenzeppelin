@@ -17,4 +17,4 @@ jobs:
       - name: Check Outdated
         run: |
           bundle install
-          bundle outdated rails
+          bundle outdated --filter-major --filter-minor rails
