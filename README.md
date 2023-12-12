@@ -5,8 +5,13 @@
 <img src="https://badge.fury.io/rb/pundit.svg"/>
 </p>
 
+> **Schienenzeppelin has been archived!** Building a custom Rails generator was a fun experiment. Unfortunately, it's ultimately unwieldy and not maintainable. Check out [Kalamazoo](https://github.com/hschne/kalamazoo) for a simpler alternative.
+
+
 The Ruby on Rails app generator to get you started quickly. Includes TailwindCSS,
 Devise, Capistrano and much more. Check out these [screenshots](GALLERY.md) and [What's in the Box](#whats-in-the-box) to find out more.
+
+
 
 ![zeppelin](./schienenzeppelin.jpg)
 
