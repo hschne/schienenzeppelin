@@ -1,10 +1,5 @@
 <h1 align="center">Schienenzeppelin</h1>
 
-<p align="center">
-<img src="https://github.com/hschne/schienenzeppelin/workflows/Ruby/badge.svg"/>
-<img src="https://badge.fury.io/rb/pundit.svg"/>
-</p>
-
 > **Schienenzeppelin has been archived!** Building a custom Rails generator was a fun experiment. Unfortunately, it's ultimately unwieldy and not maintainable. Check out [Kalamazoo](https://github.com/hschne/kalamazoo) for a simpler alternative.
 
 
